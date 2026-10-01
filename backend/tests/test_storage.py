@@ -21,6 +21,7 @@ def test_latest_decision_skips_invalid_json_and_approval_round_trips(tmp_path):
 
     assert storage.get_latest_decision()["id"] == "valid"
     assert storage.get_approval("valid") == approval
+<<<<<<< HEAD
     assert storage.get_approval("missing") is None
 
 
@@ -38,3 +39,6 @@ def test_delete_dataset_records_removes_only_matching_decisions_and_approvals(tm
     assert storage.get_latest_decision()["id"] == "kept"
     assert storage.get_approval("kept")["action"] == "approve"
     assert storage.is_dataset_deleted("demo-id")
+=======
+    assert storage.get_approval("missing") is None
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71

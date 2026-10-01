@@ -20,7 +20,10 @@ def upload_csv(content=GENERIC_CSV, filename="customer_sales.csv"):
 
 
 def test_demo_analysis_evidence_simulation_and_approval():
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     assert client.get("/health").json()["status"] == "online"
     response = client.post("/api/decision/analyze", json={"question": "Which 10 leads should our sales team contact first this week?"})
     assert response.status_code == 200
@@ -84,6 +87,7 @@ def test_latest_decision_returns_clear_404_when_storage_is_empty(monkeypatch, tm
     assert response.json()["detail"] == "No decision has been created yet."
 
 
+<<<<<<< HEAD
 def test_application_starts_with_no_dataset_loaded():
     main.records = pd.DataFrame()
     main.active_dataset_metadata = {"filename": "No dataset loaded", "file_type": "", "source": "none", "dataset_id": "", "sheet_names": [], "selected_sheet": None}
@@ -126,6 +130,8 @@ def test_delete_dataset_clears_associated_state_and_not_other_dataset(monkeypatc
     assert client.get("/api/decision/latest").status_code == 404
 
 
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 def test_inactivity_simulation_uses_adjustable_inactivity_scoring_and_normalized_weights():
     client.post("/api/data/demo")
     decision = client.post("/api/decision/analyze", json={"question": "Which inactive customers should we re-engage?"}).json()
@@ -170,23 +176,32 @@ def test_old_dataset_decision_is_rejected_by_evidence_simulation_and_approval():
 
 
 def test_ambiguous_question_requests_clarification():
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     response = client.post("/api/decision/analyze", json={"question": "What should I do?"})
     assert response.status_code == 422
     assert "clarify" in response.json()["detail"].lower()
 
 
 def test_rejection_requires_reason():
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     decision = client.post("/api/decision/analyze", json={"question": "Which leads should we prioritize this week?"}).json()
     response = client.post("/api/approval", json={"decision_id": decision["id"], "action": "reject"})
     assert response.status_code == 400
 
+<<<<<<< HEAD
     rejected = client.post("/api/approval", json={"decision_id": decision["id"], "action": "reject", "note": "Insufficient budget this quarter."})
     assert rejected.status_code == 200
     assert rejected.json()["approval"]["action"] == "reject"
     assert client.get(f"/api/decision/{decision['id']}/approval").json()["approval"]["note"] == "Insufficient budget this quarter."
 
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 
 def test_csv_upload_parses_synthetic_demo_file():
     csv_path = Path(__file__).resolve().parents[2] / "data" / "demo_sales_data.csv"
@@ -198,14 +213,20 @@ def test_csv_upload_parses_synthetic_demo_file():
 
 
 def test_revenue_question_weights_revenue_more_heavily():
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     decision = client.post("/api/decision/analyze", json={"question": "Where is our biggest revenue opportunity?"}).json()
     assert decision["intent"] == "revenue_opportunity"
     assert decision["weights"]["revenue"] > decision["weights"]["engagement"]
 
 
 def test_no_matching_records_returns_explicit_error(monkeypatch):
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     original = main.records
     monkeypatch.setattr(main, "records", original[original["lead_status"] == "Active"].copy())
     response = client.post("/api/decision/analyze", json={"question": "Which inactive customers should we re-engage?"})
@@ -214,7 +235,10 @@ def test_no_matching_records_returns_explicit_error(monkeypatch):
 
 
 def test_records_without_decision_fields_return_insufficient_evidence(monkeypatch):
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     original = main.records
     empty = original.iloc[:1].copy()
     empty[["lead_value", "engagement_score", "previous_purchases", "last_contact_date", "lead_status"]] = None
@@ -225,7 +249,10 @@ def test_records_without_decision_fields_return_insufficient_evidence(monkeypatc
 
 
 def test_conflicting_duplicate_records_block_analysis(monkeypatch):
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     original = main.records
     duplicate = original.iloc[[0]].copy()
     duplicate["company"] = "Conflicting Source Record"
@@ -236,7 +263,10 @@ def test_conflicting_duplicate_records_block_analysis(monkeypatch):
 
 
 def test_historical_performance_question_requires_historical_data():
+<<<<<<< HEAD
     client.post("/api/data/demo")
+=======
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     response = client.post("/api/decision/analyze", json={"question": "What changed in our sales performance?"})
     assert response.status_code == 422
     assert "historical sales performance" in response.json()["detail"].lower()

@@ -186,7 +186,11 @@ def summarize(frame: pd.DataFrame, metadata: dict[str, Any] | None = None) -> di
     if "lead_id" in frame.columns:
         values = frame[frame["lead_id"].notna()].groupby("lead_id")[columns].nunique(dropna=False)
         conflicting = int((values > 1).any(axis=1).sum())
+<<<<<<< HEAD
     quality = round(max(0, 100 * (1 - (missing + duplicate_rows) / max(1, rows * max(1, len(columns))))), 1) if rows and columns else 0.0
+=======
+    quality = round(max(0, 100 * (1 - (missing + duplicate_rows) / max(1, rows * max(1, len(columns))))), 1)
+>>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     warnings = [f"{count} missing values in {column}" for column, count in missing_by_column.items() if count]
     if duplicate_rows:
         warnings.append(f"{duplicate_rows} duplicate records detected.")

@@ -1,0 +1,361 @@
+lead_id,company,industry,lead_value,engagement_score,previous_purchases,last_contact_date,lead_status,sales_activity,customer_segment,region,sales_rep
+LD-0001,Aster Industries 001,Retail,325543.0,31.0,2.0,2026-07-19,Active,Email opened,Growth,West,Rep D
+LD-0002,Atlas Industries 002,Hospitality,398026.0,22.0,3.0,2026-09-29,Qualified,Meeting booked,Small business,West,Rep F
+LD-0003,Vertex Group 003,Healthcare,340533.0,28.0,2.0,2026-03-22,Qualified,Demo requested,Mid-market,South,Rep C
+LD-0004,Cobalt Partners 004,Retail,56495.0,47.0,4.0,2026-08-19,Inactive,Meeting booked,Growth,Central,Rep F
+LD-0005,Aster Partners 005,Retail,123848.0,74.0,1.0,2026-09-14,Active,Email opened,Small business,Central,Rep C
+LD-0006,Cobalt Systems 006,Retail,138347.0,76.0,0.0,2026-02-21,New,Call completed,Small business,North,Rep C
+LD-0007,Pioneer Industries 007,Education,265830.0,54.0,1.0,2026-09-19,Inactive,No response,Enterprise,West,Rep D
+LD-0008,Meridian Systems 008,Healthcare,250039.0,65.0,7.0,2026-02-23,New,Pricing viewed,Small business,Central,Rep E
+LD-0009,Pioneer Group 009,Logistics,227706.0,36.0,0.0,2026-09-20,Nurture,Proposal sent,Enterprise,South,Rep E
+LD-0010,Pioneer Group 010,Hospitality,589627.0,84.0,1.0,2026-09-17,Nurture,No response,Enterprise,East,Rep A
+LD-0011,Cobalt Industries 011,Technology,55710.0,29.0,5.0,2026-02-24,Active,Demo requested,Enterprise,West,Rep A
+LD-0012,Northstar Industries 012,Financial Services,32437.0,89.0,3.0,2026-09-14,Active,Email opened,Enterprise,North,Rep E
+LD-0013,Atlas Partners 013,Logistics,333074.0,74.0,0.0,2026-05-08,New,Follow-up due,Small business,East,Rep D
+LD-0014,Meridian Industries 014,Retail,365807.0,27.0,0.0,2026-06-17,Qualified,No response,Growth,North,Rep F
+LD-0015,Keystone Holdings 015,Technology,150654.0,20.0,5.0,2026-06-26,Qualified,Call completed,Mid-market,East,Rep E
+LD-0016,Juniper Partners 016,Retail,269303.0,83.0,4.0,2026-06-17,Inactive,Email opened,Mid-market,North,Rep A
+LD-0017,Vertex Group 017,Technology,181101.0,87.0,1.0,,Qualified,Meeting booked,Enterprise,North,Rep C
+LD-0018,Vertex Industries 018,Education,318226.0,45.0,1.0,2026-07-18,Active,Follow-up due,Small business,South,Rep D
+LD-0019,Meridian Industries 019,Manufacturing,236892.0,38.0,5.0,2026-09-28,Nurture,Meeting booked,Enterprise,Central,Rep F
+LD-0020,Vertex Industries 020,Healthcare,122692.0,85.0,2.0,2026-09-23,Qualified,Call completed,Growth,Central,Rep F
+LD-0021,Juniper Group 021,Retail,102245.0,43.0,1.0,2026-05-03,New,Pricing viewed,Enterprise,West,Rep B
+LD-0022,Juniper Works 022,Retail,22327.0,39.0,5.0,2026-05-05,New,No response,Enterprise,Central,Rep F
+LD-0023,Aster Partners 023,Technology,199999.0,88.0,5.0,2026-03-09,Active,Email opened,Small business,North,Rep C
+LD-0024,Juniper Holdings 024,Financial Services,219911.0,79.0,1.0,2026-08-28,Qualified,Call completed,Mid-market,Central,Rep A
+LD-0025,Meridian Holdings 025,Technology,372802.0,25.0,3.0,2026-04-23,Nurture,No response,Mid-market,North,Rep A
+LD-0026,Aster Partners 026,Retail,269247.0,87.0,1.0,2026-09-28,Active,Call completed,Enterprise,North,Rep D
+LD-0027,Cobalt Works 027,Technology,345845.0,45.0,0.0,2026-02-26,Active,Email opened,Mid-market,Central,Rep A
+LD-0028,Vertex Partners 028,Education,398366.0,72.0,0.0,2026-09-25,Active,Email opened,Small business,Central,Rep C
+LD-0029,Meridian Works 029,Logistics,155341.0,17.0,0.0,2026-07-21,Active,Proposal sent,Mid-market,East,Rep B
+LD-0030,Northstar Systems 030,Logistics,341433.0,71.0,7.0,2026-08-14,Qualified,Follow-up due,Enterprise,South,Rep C
+LD-0031,Summit Works 031,Retail,334530.0,85.0,5.0,2026-05-24,Inactive,Proposal sent,Small business,West,Rep B
+LD-0032,Pioneer Systems 032,Retail,614277.0,,2.0,2026-09-28,Inactive,Email opened,Growth,West,Rep E
+LD-0033,Vertex Partners 033,Financial Services,152025.0,23.0,3.0,2026-03-31,New,No response,Growth,North,Rep F
+LD-0034,Cobalt Works 034,Education,144414.0,24.0,1.0,2026-08-07,Nurture,Proposal sent,Small business,South,Rep D
+LD-0035,Summit Systems 035,Logistics,181224.0,58.0,0.0,2026-07-22,Qualified,No response,Mid-market,Central,Rep A
+LD-0036,Meridian Partners 036,Retail,109955.0,90.0,0.0,2026-09-19,Inactive,Call completed,Mid-market,North,Rep F
+LD-0037,Cobalt Partners 037,Hospitality,288980.0,80.0,3.0,2026-09-15,Inactive,Meeting booked,Mid-market,Central,Rep D
+LD-0038,Aster Industries 038,Education,47446.0,49.0,4.0,2026-08-08,Active,Proposal sent,Growth,South,Rep D
+LD-0039,Aster Group 039,Manufacturing,187584.0,18.0,1.0,2026-02-15,Qualified,Follow-up due,Growth,North,Rep E
+LD-0040,Summit Systems 040,Education,417578.0,45.0,4.0,2026-09-01,Qualified,Proposal sent,Mid-market,North,Rep E
+LD-0041,Meridian Partners 041,Retail,439084.0,100.0,7.0,2026-09-24,Active,Demo requested,Mid-market,West,Rep D
+LD-0042,Summit Industries 042,Logistics,351661.0,37.0,1.0,2026-03-06,Qualified,Proposal sent,Enterprise,West,Rep B
+LD-0043,Juniper Partners 043,Retail,168563.0,28.0,3.0,2026-05-16,Active,No response,Growth,West,Rep C
+LD-0044,Aster Holdings 044,Hospitality,183884.0,96.0,1.0,2026-09-15,Active,Demo requested,Enterprise,South,Rep A
+LD-0045,Cobalt Partners 045,Healthcare,383313.0,31.0,0.0,2026-03-11,Nurture,Demo requested,Mid-market,Central,Rep A
+LD-0046,Keystone Systems 046,Technology,66666.0,83.0,0.0,2026-09-18,Active,Proposal sent,Enterprise,West,Rep D
+LD-0047,Aster Works 047,Manufacturing,210773.0,22.0,0.0,2026-09-18,Active,Demo requested,Enterprise,South,Rep C
+LD-0048,Meridian Industries 048,Education,190271.0,76.0,0.0,2026-08-06,Nurture,Call completed,Growth,East,Rep C
+LD-0049,Summit Holdings 049,Hospitality,555711.0,93.0,1.0,2026-09-22,New,Follow-up due,Small business,North,Rep C
+LD-0050,Pioneer Industries 050,Retail,264534.0,82.0,1.0,2026-07-30,New,Meeting booked,Growth,West,Rep F
+LD-0051,Aster Works 051,Healthcare,251733.0,50.0,3.0,2026-03-31,New,Proposal sent,Growth,West,Rep D
+LD-0052,Aster Group 052,Healthcare,345851.0,63.0,1.0,2026-05-23,New,No response,Enterprise,South,Rep F
+LD-0053,Northstar Holdings 053,Education,292085.0,74.0,1.0,2026-08-01,New,Call completed,Growth,South,Rep C
+LD-0054,Northstar Group 054,Healthcare,404960.0,34.0,2.0,2026-08-02,New,Meeting booked,Small business,North,Rep A
+LD-0055,Aster Holdings 055,Logistics,,8.0,2.0,2026-03-21,Inactive,Email opened,Small business,East,Rep F
+LD-0056,Juniper Industries 056,Technology,388159.0,42.0,5.0,2026-08-22,Active,Meeting booked,Enterprise,East,Rep B
+LD-0057,Meridian Systems 057,Technology,208898.0,59.0,2.0,2026-08-11,Inactive,Meeting booked,Mid-market,North,Rep B
+LD-0058,Atlas Industries 058,Manufacturing,21293.0,36.0,0.0,2026-07-07,Qualified,No response,Small business,West,Rep C
+LD-0059,Pioneer Systems 059,Logistics,384331.0,79.0,0.0,2026-09-15,Inactive,Proposal sent,Growth,North,Rep C
+LD-0060,Keystone Partners 060,Financial Services,222613.0,44.0,1.0,2026-05-06,New,Meeting booked,Small business,West,Rep B
+LD-0061,Northstar Partners 061,Retail,245193.0,92.0,4.0,2026-09-28,Inactive,Follow-up due,Mid-market,North,Rep D
+LD-0062,Keystone Holdings 062,Hospitality,45351.0,64.0,1.0,2026-05-09,Active,Demo requested,Enterprise,South,Rep D
+LD-0063,Juniper Industries 063,Manufacturing,225892.0,27.0,4.0,2026-05-07,Nurture,Follow-up due,Growth,South,Rep F
+LD-0064,Meridian Group 064,Retail,85481.0,99.0,0.0,2026-09-23,Qualified,No response,Enterprise,North,Rep D
+LD-0065,Keystone Industries 065,Manufacturing,327185.0,66.0,0.0,2026-06-26,Qualified,Meeting booked,Growth,South,Rep E
+LD-0066,Juniper Industries 066,Education,67014.0,70.0,1.0,2026-09-20,Active,Call completed,Enterprise,West,Rep C
+LD-0067,Summit Works 067,Logistics,161106.0,72.0,2.0,2026-03-24,Qualified,Call completed,Mid-market,Central,Rep C
+LD-0068,Summit Group 068,Technology,243357.0,79.0,5.0,2026-09-14,Active,Follow-up due,Mid-market,West,Rep F
+LD-0069,Pioneer Group 069,Education,419382.0,59.0,2.0,2026-07-06,Inactive,Demo requested,Growth,South,Rep E
+LD-0070,Northstar Systems 070,Manufacturing,77924.0,9.0,3.0,2026-06-17,Active,No response,Small business,West,Rep B
+LD-0071,Meridian Partners 071,Hospitality,158459.0,37.0,3.0,2026-07-19,Qualified,Proposal sent,Mid-market,West,Rep D
+LD-0072,Juniper Group 072,Healthcare,57850.0,87.0,0.0,2026-09-21,New,Pricing viewed,Mid-market,East,Rep C
+LD-0073,Northstar Holdings 073,Logistics,74589.0,32.0,0.0,2026-07-25,Active,Follow-up due,Mid-market,East,Rep A
+LD-0074,Atlas Industries 074,Education,207181.0,59.0,4.0,2026-02-13,Qualified,Proposal sent,Growth,East,Rep C
+LD-0075,Pioneer Group 075,Financial Services,94836.0,71.0,5.0,2026-05-16,Nurture,Demo requested,Growth,Central,Rep C
+LD-0076,Pioneer Systems 076,Education,21964.0,72.0,1.0,2026-09-13,Qualified,Proposal sent,Growth,South,Rep A
+LD-0077,Vertex Partners 077,Financial Services,606473.0,72.0,0.0,2026-09-13,Active,Email opened,Small business,Central,Rep D
+LD-0078,Pioneer Systems 078,Logistics,181482.0,30.0,1.0,2026-07-18,Active,Follow-up due,Enterprise,North,Rep E
+LD-0079,Meridian Holdings 079,Retail,382750.0,9.0,1.0,2026-02-24,Active,Meeting booked,Growth,Central,Rep C
+LD-0080,Pioneer Holdings 080,Technology,253180.0,34.0,4.0,2026-09-29,Qualified,Proposal sent,Small business,East,Rep B
+LD-0081,Pioneer Works 081,Technology,235444.0,40.0,5.0,2026-06-13,Active,Proposal sent,Enterprise,Central,Rep B
+LD-0082,Northstar Works 082,Retail,252429.0,50.0,3.0,2026-09-28,New,Call completed,Small business,West,Rep B
+LD-0083,Summit Works 083,Healthcare,115034.0,54.0,1.0,2026-09-15,Active,Meeting booked,Enterprise,North,Rep C
+LD-0084,Atlas Partners 084,Logistics,225321.0,99.0,1.0,2026-09-21,Qualified,Demo requested,Enterprise,South,Rep F
+LD-0085,Cobalt Works 085,Hospitality,139433.0,100.0,7.0,2026-09-28,New,Follow-up due,Enterprise,East,Rep C
+LD-0086,Pioneer Holdings 086,Education,456039.0,88.0,1.0,2026-09-18,Active,Call completed,Growth,Central,Rep A
+LD-0087,Pioneer Holdings 087,Hospitality,400965.0,28.0,2.0,2026-09-27,Active,Pricing viewed,Enterprise,Central,Rep A
+LD-0088,Northstar Works 088,Hospitality,325406.0,,4.0,2026-09-13,Inactive,No response,Enterprise,South,Rep E
+LD-0089,Meridian Industries 089,Hospitality,141544.0,79.0,1.0,2026-09-16,New,Call completed,Enterprise,South,Rep F
+LD-0090,Pioneer Holdings 090,Healthcare,245540.0,19.0,2.0,2026-06-13,Inactive,Email opened,Small business,West,Rep D
+LD-0091,Juniper Systems 091,Financial Services,240688.0,9.0,2.0,2026-02-17,Inactive,Pricing viewed,Mid-market,West,Rep C
+LD-0092,Aster Holdings 092,Retail,183352.0,32.0,1.0,2026-02-17,New,Follow-up due,Small business,North,Rep F
+LD-0093,Keystone Systems 093,Logistics,141467.0,81.0,3.0,2026-09-20,Qualified,Proposal sent,Enterprise,East,Rep B
+LD-0094,Aster Group 094,Financial Services,202053.0,73.0,2.0,2026-05-08,New,Meeting booked,Growth,South,Rep E
+LD-0095,Summit Industries 095,Retail,320191.0,44.0,3.0,2026-08-14,Qualified,Pricing viewed,Enterprise,South,Rep A
+LD-0096,Atlas Industries 096,Retail,95097.0,91.0,1.0,2026-09-24,Nurture,Follow-up due,Enterprise,North,Rep D
+LD-0097,Vertex Industries 097,Retail,415592.0,93.0,1.0,2026-09-15,Nurture,Demo requested,Mid-market,South,Rep A
+LD-0098,Atlas Holdings 098,Financial Services,615526.0,99.0,5.0,2026-09-23,Inactive,Demo requested,Small business,East,Rep B
+LD-0099,Atlas Holdings 099,Education,322767.0,59.0,0.0,2026-04-30,Inactive,Call completed,Small business,South,Rep D
+LD-0100,Cobalt Holdings 100,Logistics,409398.0,75.0,2.0,2026-09-14,New,Pricing viewed,Growth,East,Rep A
+LD-0101,Meridian Holdings 101,Financial Services,135192.0,77.0,2.0,2026-09-28,Active,Pricing viewed,Enterprise,North,Rep F
+LD-0102,Atlas Systems 102,Technology,33302.0,86.0,4.0,2026-09-14,New,Demo requested,Enterprise,South,Rep E
+LD-0103,Juniper Industries 103,Hospitality,363073.0,39.0,0.0,2026-09-01,Active,Call completed,Enterprise,Central,Rep B
+LD-0104,Aster Industries 104,Financial Services,157976.0,42.0,7.0,2026-09-26,Active,Demo requested,Small business,West,Rep E
+LD-0105,Juniper Group 105,Healthcare,111592.0,10.0,1.0,2026-05-20,Inactive,Call completed,Mid-market,West,Rep F
+LD-0106,Vertex Partners 106,Technology,63423.0,81.0,2.0,2026-03-18,Qualified,Pricing viewed,Growth,South,Rep A
+LD-0107,Meridian Systems 107,Education,43341.0,79.0,2.0,2026-09-17,Inactive,Proposal sent,Enterprise,Central,Rep E
+LD-0108,Keystone Partners 108,Financial Services,270390.0,30.0,0.0,2026-05-03,Active,Pricing viewed,Small business,West,Rep D
+LD-0109,Pioneer Works 109,Manufacturing,32783.0,72.0,2.0,2026-09-29,New,Call completed,Mid-market,East,Rep A
+LD-0110,Keystone Partners 110,Financial Services,143561.0,85.0,1.0,2026-06-30,Active,Proposal sent,Small business,Central,Rep D
+LD-0111,Vertex Group 111,Education,356869.0,13.0,1.0,2026-05-21,Active,No response,Enterprise,Central,Rep C
+LD-0112,Atlas Group 112,Technology,275313.0,70.0,,2026-03-07,Inactive,Email opened,Enterprise,North,Rep B
+LD-0113,Juniper Partners 113,Manufacturing,151882.0,18.0,1.0,2026-08-12,Inactive,No response,Small business,Central,Rep E
+LD-0114,Aster Systems 114,Financial Services,279580.0,78.0,1.0,2026-06-26,Qualified,Meeting booked,Growth,West,Rep E
+LD-0115,Cobalt Industries 115,Logistics,371785.0,77.0,4.0,2026-07-15,Inactive,Email opened,Small business,East,Rep A
+LD-0116,Pioneer Partners 116,Healthcare,302221.0,32.0,1.0,2026-05-09,Qualified,Call completed,Growth,East,Rep B
+LD-0117,Vertex Holdings 117,Manufacturing,254847.0,67.0,3.0,2026-09-19,Active,Demo requested,Growth,South,Rep D
+LD-0118,Vertex Industries 118,Healthcare,330310.0,78.0,4.0,2026-09-19,Active,Call completed,Enterprise,South,Rep F
+LD-0119,Summit Works 119,Hospitality,102276.0,96.0,2.0,2026-09-28,Qualified,No response,Small business,Central,Rep B
+LD-0120,Aster Works 120,Healthcare,408313.0,83.0,2.0,2026-02-17,New,Meeting booked,Enterprise,South,Rep D
+LD-0121,Aster Holdings 121,Logistics,445512.0,97.0,1.0,2026-09-16,Active,Pricing viewed,Growth,West,Rep C
+LD-0122,Northstar Works 122,Manufacturing,52122.0,28.0,4.0,2026-08-30,Nurture,Pricing viewed,Growth,North,Rep E
+LD-0123,Juniper Group 123,Technology,229876.0,33.0,3.0,2026-04-07,New,Follow-up due,Small business,West,Rep B
+LD-0124,Keystone Works 124,Technology,408071.0,90.0,1.0,2026-09-27,Active,Pricing viewed,Mid-market,East,Rep B
+LD-0125,Pioneer Works 125,Technology,150492.0,37.0,1.0,2026-06-04,Active,Email opened,Enterprise,Central,Rep E
+LD-0126,Meridian Partners 126,Manufacturing,321251.0,12.0,0.0,2026-03-13,New,Email opened,Enterprise,North,Rep E
+LD-0127,Atlas Holdings 127,Financial Services,233061.0,98.0,4.0,2026-09-21,New,Demo requested,Small business,Central,Rep A
+LD-0128,Pioneer Systems 128,Education,35376.0,49.0,1.0,2026-05-25,Nurture,Email opened,Mid-market,East,Rep D
+LD-0129,Vertex Holdings 129,Hospitality,166967.0,17.0,1.0,2026-09-15,Nurture,Meeting booked,Growth,East,Rep E
+LD-0130,Aster Works 130,Education,584256.0,76.0,2.0,2026-09-26,Qualified,Follow-up due,Small business,South,Rep C
+LD-0131,Vertex Industries 131,Technology,305613.0,56.0,0.0,2026-02-21,New,No response,Enterprise,North,Rep B
+LD-0132,Vertex Systems 132,Logistics,279351.0,18.0,2.0,2026-05-27,Qualified,No response,Enterprise,Central,Rep E
+LD-0133,Aster Holdings 133,Technology,231257.0,56.0,2.0,2026-09-14,Qualified,No response,Mid-market,North,Rep E
+LD-0134,Keystone Group 134,Technology,156689.0,87.0,2.0,2026-09-22,Active,No response,Mid-market,Central,Rep F
+LD-0135,Vertex Holdings 135,Financial Services,27164.0,33.0,3.0,2026-08-03,Active,Pricing viewed,Small business,Central,Rep A
+LD-0136,Summit Holdings 136,Education,365558.0,20.0,0.0,2026-05-10,Active,Call completed,Mid-market,West,Rep D
+LD-0137,Keystone Works 137,Hospitality,314901.0,69.0,5.0,2026-08-23,Qualified,Demo requested,Small business,South,Rep A
+LD-0138,Juniper Systems 138,Education,210530.0,63.0,1.0,2026-06-20,Qualified,Meeting booked,Small business,Central,Rep E
+LD-0139,Keystone Systems 139,Hospitality,313685.0,83.0,4.0,2026-09-27,Active,Call completed,Mid-market,West,Rep E
+LD-0140,Meridian Works 140,Healthcare,56389.0,69.0,0.0,2026-09-22,New,Pricing viewed,Mid-market,South,Rep E
+LD-0141,Cobalt Group 141,Logistics,615512.0,73.0,5.0,2026-09-16,Active,Pricing viewed,Growth,West,Rep A
+LD-0142,Meridian Holdings 142,Healthcare,407678.0,21.0,1.0,2026-05-28,New,Meeting booked,Mid-market,East,Rep B
+LD-0143,Vertex Works 143,Education,325298.0,50.0,0.0,2026-05-18,Active,No response,Growth,North,Rep B
+LD-0144,Meridian Holdings 144,Hospitality,310367.0,60.0,4.0,2026-06-10,Active,Email opened,Growth,North,Rep C
+LD-0145,Pioneer Industries 145,Financial Services,199111.0,,5.0,2026-08-28,New,Proposal sent,Small business,East,Rep B
+LD-0146,Keystone Group 146,Manufacturing,320243.0,75.0,2.0,2026-08-08,New,Pricing viewed,Small business,West,Rep E
+LD-0147,Summit Systems 147,Logistics,398588.0,71.0,3.0,2026-02-15,Qualified,Follow-up due,Growth,East,Rep B
+LD-0148,Juniper Systems 148,Retail,200265.0,25.0,2.0,2026-08-31,Active,Email opened,Small business,East,Rep F
+LD-0149,Juniper Group 149,Retail,29189.0,77.0,3.0,2026-04-21,New,No response,Mid-market,East,Rep C
+LD-0150,Keystone Holdings 150,Education,123665.0,48.0,2.0,2026-03-26,Active,Follow-up due,Enterprise,West,Rep F
+LD-0151,Atlas Partners 151,Retail,648339.0,74.0,0.0,2026-09-20,New,Pricing viewed,Growth,South,Rep F
+LD-0152,Juniper Group 152,Retail,176419.0,81.0,3.0,2026-09-16,Active,Follow-up due,Mid-market,East,Rep D
+LD-0153,Aster Partners 153,Hospitality,450057.0,91.0,0.0,2026-09-14,Active,Email opened,Mid-market,West,Rep D
+LD-0154,Keystone Partners 154,Hospitality,135750.0,37.0,0.0,2026-03-16,Active,Follow-up due,Small business,West,Rep A
+LD-0155,Aster Holdings 155,Hospitality,196388.0,27.0,3.0,2026-07-09,Active,No response,Mid-market,West,Rep B
+LD-0156,Atlas Systems 156,Hospitality,145832.0,75.0,0.0,2026-03-31,Active,Email opened,Small business,North,Rep C
+LD-0157,Atlas Partners 157,Education,329458.0,34.0,1.0,2026-06-25,Active,Proposal sent,Enterprise,North,Rep B
+LD-0158,Meridian Group 158,Financial Services,216263.0,41.0,2.0,2026-09-19,Qualified,Proposal sent,Enterprise,East,Rep F
+LD-0159,Keystone Systems 159,Technology,275753.0,8.0,4.0,2026-03-06,Inactive,Demo requested,Mid-market,North,Rep D
+LD-0160,Pioneer Works 160,Retail,335026.0,11.0,7.0,2026-06-28,Nurture,Demo requested,Enterprise,Central,Rep A
+LD-0161,Summit Industries 161,Retail,224132.0,56.0,4.0,2026-09-25,Active,Pricing viewed,Growth,West,Rep B
+LD-0162,Northstar Holdings 162,Healthcare,267139.0,88.0,2.0,2026-09-29,Active,Follow-up due,Mid-market,Central,Rep E
+LD-0163,Pioneer Group 163,Financial Services,291669.0,88.0,2.0,2026-08-07,Active,Email opened,Growth,East,Rep E
+LD-0164,Atlas Holdings 164,Retail,,61.0,0.0,2026-03-15,Qualified,Meeting booked,Small business,West,Rep D
+LD-0165,Pioneer Group 165,Healthcare,59185.0,64.0,1.0,2026-09-19,Qualified,Demo requested,Enterprise,East,Rep D
+LD-0166,Juniper Systems 166,Education,148781.0,38.0,0.0,2026-03-05,Active,Pricing viewed,Growth,Central,Rep C
+LD-0167,Pioneer Holdings 167,Healthcare,216308.0,97.0,2.0,2026-09-20,Active,No response,Mid-market,Central,Rep B
+LD-0168,Aster Industries 168,Hospitality,21154.0,38.0,5.0,2026-06-04,Qualified,Demo requested,Growth,South,Rep A
+LD-0169,Keystone Holdings 169,Retail,298347.0,77.0,2.0,2026-09-29,Active,Proposal sent,Mid-market,South,Rep C
+LD-0170,Cobalt Systems 170,Education,141985.0,17.0,1.0,2026-06-02,Qualified,Pricing viewed,Growth,South,Rep F
+LD-0171,Keystone Industries 171,Healthcare,299723.0,75.0,0.0,2026-09-25,Inactive,Meeting booked,Mid-market,South,Rep B
+LD-0172,Pioneer Systems 172,Healthcare,599921.0,78.0,2.0,2026-09-19,New,Proposal sent,Enterprise,East,Rep E
+LD-0173,Atlas Systems 173,Hospitality,138474.0,25.0,1.0,2026-05-19,Qualified,Follow-up due,Enterprise,East,Rep B
+LD-0174,Summit Works 174,Hospitality,334727.0,40.0,0.0,2026-09-22,Qualified,Proposal sent,Enterprise,South,Rep B
+LD-0175,Juniper Systems 175,Healthcare,98267.0,16.0,5.0,2026-08-11,Active,Demo requested,Growth,South,Rep F
+LD-0176,Juniper Industries 176,Hospitality,48706.0,53.0,0.0,2026-03-27,Active,Demo requested,Enterprise,East,Rep C
+LD-0177,Cobalt Group 177,Logistics,97717.0,52.0,0.0,2026-05-03,New,Demo requested,Growth,Central,Rep D
+LD-0178,Keystone Group 178,Technology,273813.0,81.0,0.0,2026-03-11,Qualified,Demo requested,Mid-market,North,Rep F
+LD-0179,Aster Works 179,Healthcare,408814.0,80.0,4.0,2026-09-13,Inactive,Proposal sent,Small business,East,Rep F
+LD-0180,Juniper Group 180,Logistics,416468.0,80.0,4.0,2026-09-15,New,Meeting booked,Enterprise,Central,Rep F
+LD-0181,Meridian Holdings 181,Retail,101839.0,11.0,0.0,2026-04-13,Active,Follow-up due,Growth,South,Rep E
+LD-0182,Pioneer Industries 182,Healthcare,223494.0,45.0,0.0,2026-05-12,Qualified,Follow-up due,Enterprise,East,Rep B
+LD-0183,Cobalt Partners 183,Healthcare,104854.0,74.0,1.0,2026-03-11,Qualified,No response,Enterprise,North,Rep F
+LD-0184,Aster Partners 184,Technology,233745.0,9.0,2.0,2026-08-19,Qualified,Proposal sent,Mid-market,West,Rep A
+LD-0185,Keystone Group 185,Hospitality,191900.0,84.0,3.0,2026-02-27,Qualified,Meeting booked,Small business,North,Rep A
+LD-0186,Summit Group 186,Retail,278505.0,49.0,0.0,2026-04-27,Qualified,Email opened,Small business,North,Rep E
+LD-0187,Atlas Systems 187,Healthcare,255734.0,27.0,5.0,2026-09-23,Qualified,Demo requested,Small business,Central,Rep F
+LD-0188,Aster Industries 188,Logistics,223387.0,49.0,0.0,2026-05-29,New,Proposal sent,Growth,West,Rep C
+LD-0189,Juniper Group 189,Healthcare,405570.0,72.0,0.0,2026-09-15,New,Follow-up due,Enterprise,West,Rep D
+LD-0190,Summit Holdings 190,Hospitality,163769.0,86.0,1.0,2026-04-04,Qualified,Meeting booked,Mid-market,West,Rep C
+LD-0191,Meridian Works 191,Retail,339085.0,80.0,5.0,2026-08-22,New,Meeting booked,Mid-market,South,Rep D
+LD-0192,Aster Works 192,Technology,70138.0,79.0,3.0,2026-09-23,Qualified,Follow-up due,Enterprise,East,Rep C
+LD-0193,Meridian Systems 193,Manufacturing,300863.0,32.0,2.0,2026-09-18,New,Meeting booked,Enterprise,South,Rep E
+LD-0194,Pioneer Systems 194,Education,262214.0,78.0,2.0,2026-09-29,New,No response,Mid-market,North,Rep F
+LD-0195,Atlas Industries 195,Education,365581.0,77.0,7.0,2026-09-22,Active,Call completed,Enterprise,North,Rep C
+LD-0196,Juniper Industries 196,Technology,237842.0,81.0,1.0,2026-09-18,Nurture,Pricing viewed,Growth,North,Rep C
+LD-0197,Juniper Systems 197,Financial Services,205100.0,53.0,4.0,2026-05-31,Nurture,Meeting booked,Growth,Central,Rep E
+LD-0198,Cobalt Works 198,Logistics,127673.0,84.0,4.0,2026-07-29,Nurture,Pricing viewed,Enterprise,Central,Rep D
+LD-0199,Pioneer Partners 199,Hospitality,45472.0,31.0,0.0,2026-05-04,Inactive,Follow-up due,Enterprise,South,Rep B
+LD-0200,Atlas Works 200,Financial Services,414653.0,65.0,2.0,2026-02-14,Active,Demo requested,Small business,East,Rep C
+LD-0201,Vertex Works 201,Technology,170850.0,24.0,2.0,2026-06-09,Active,Proposal sent,Enterprise,North,Rep D
+LD-0202,Northstar Group 202,Technology,286450.0,44.0,0.0,2026-09-23,Active,Call completed,Mid-market,West,Rep B
+LD-0203,Pioneer Group 203,Logistics,249889.0,19.0,4.0,2026-09-20,New,Proposal sent,Growth,North,Rep B
+LD-0204,Aster Group 204,Healthcare,208223.0,40.0,5.0,,Active,Meeting booked,Enterprise,East,Rep F
+LD-0205,Northstar Holdings 205,Financial Services,203675.0,81.0,3.0,2026-04-17,Nurture,Pricing viewed,Enterprise,West,Rep E
+LD-0206,Cobalt Systems 206,Logistics,316098.0,51.0,2.0,2026-05-14,Inactive,Pricing viewed,Mid-market,North,Rep E
+LD-0207,Keystone Works 207,Education,310780.0,27.0,2.0,2026-08-12,New,Demo requested,Growth,West,Rep C
+LD-0208,Atlas Partners 208,Logistics,191603.0,73.0,1.0,2026-09-13,New,Pricing viewed,Growth,Central,Rep F
+LD-0209,Cobalt Holdings 209,Logistics,259788.0,85.0,0.0,2026-09-21,Nurture,Follow-up due,Mid-market,East,Rep E
+LD-0210,Pioneer Holdings 210,Logistics,76753.0,64.0,2.0,2026-06-27,Qualified,Demo requested,Growth,West,Rep B
+LD-0211,Meridian Holdings 211,Technology,331067.0,92.0,4.0,2026-09-22,Active,Email opened,Enterprise,West,Rep C
+LD-0212,Vertex Holdings 212,Education,400085.0,22.0,1.0,2026-04-30,Active,Email opened,Growth,North,Rep E
+LD-0213,Cobalt Holdings 213,Healthcare,390554.0,73.0,0.0,2026-09-18,Qualified,Follow-up due,Enterprise,West,Rep C
+LD-0214,Vertex Partners 214,Education,408052.0,73.0,2.0,2026-09-21,New,Follow-up due,Growth,Central,Rep D
+LD-0215,Summit Partners 215,Education,387037.0,87.0,2.0,2026-04-24,New,Pricing viewed,Growth,North,Rep B
+LD-0216,Summit Holdings 216,Hospitality,289375.0,22.0,2.0,2026-09-27,New,Meeting booked,Mid-market,South,Rep E
+LD-0217,Atlas Group 217,Healthcare,59159.0,78.0,1.0,2026-09-05,New,Meeting booked,Mid-market,East,Rep A
+LD-0218,Pioneer Holdings 218,Hospitality,117224.0,61.0,1.0,2026-05-28,Active,Call completed,Growth,South,Rep C
+LD-0219,Juniper Industries 219,Financial Services,44824.0,80.0,2.0,2026-09-01,Qualified,Proposal sent,Mid-market,South,Rep F
+LD-0220,Juniper Holdings 220,Retail,154166.0,98.0,1.0,2026-09-29,Nurture,Call completed,Small business,North,Rep C
+LD-0221,Cobalt Group 221,Financial Services,170213.0,48.0,4.0,2026-03-04,Nurture,Email opened,Growth,North,Rep A
+LD-0222,Vertex Systems 222,Technology,256299.0,25.0,2.0,2026-06-06,Inactive,Demo requested,Mid-market,South,Rep E
+LD-0223,Summit Industries 223,Healthcare,32185.0,22.0,7.0,2026-06-15,Active,Proposal sent,Small business,North,Rep A
+LD-0224,Summit Industries 224,Education,88682.0,49.0,2.0,2026-06-04,Inactive,Meeting booked,Growth,West,Rep C
+LD-0225,Cobalt Partners 225,Healthcare,103348.0,73.0,1.0,2026-09-07,New,Call completed,Mid-market,South,Rep D
+LD-0226,Atlas Group 226,Manufacturing,395071.0,84.0,0.0,2026-09-15,New,Call completed,Mid-market,West,Rep A
+LD-0227,Aster Partners 227,Financial Services,361178.0,,3.0,2026-09-29,Nurture,Follow-up due,Mid-market,Central,Rep F
+LD-0228,Summit Systems 228,Retail,261681.0,88.0,4.0,2026-09-16,Nurture,Meeting booked,Growth,East,Rep E
+LD-0229,Vertex Group 229,Education,120405.0,79.0,0.0,2026-09-21,New,Demo requested,Enterprise,West,Rep E
+LD-0230,Keystone Holdings 230,Logistics,285150.0,41.0,2.0,2026-05-13,New,Call completed,Small business,South,Rep F
+LD-0231,Summit Holdings 231,Education,375796.0,84.0,2.0,2026-06-09,Active,Meeting booked,Small business,South,Rep C
+LD-0232,Cobalt Partners 232,Retail,268039.0,59.0,2.0,2026-06-07,Nurture,No response,Mid-market,South,Rep C
+LD-0233,Summit Systems 233,Hospitality,166086.0,82.0,0.0,2026-09-26,Qualified,Email opened,Small business,West,Rep D
+LD-0234,Keystone Systems 234,Retail,408157.0,71.0,4.0,2026-09-13,Qualified,Email opened,Mid-market,South,Rep E
+LD-0235,Northstar Works 235,Technology,177187.0,100.0,3.0,2026-09-20,Qualified,Meeting booked,Mid-market,North,Rep A
+LD-0236,Pioneer Industries 236,Technology,492653.0,81.0,1.0,2026-09-26,Nurture,Follow-up due,Enterprise,Central,Rep C
+LD-0237,Pioneer Partners 237,Logistics,80629.0,37.0,1.0,2026-09-22,Active,Pricing viewed,Enterprise,South,Rep F
+LD-0238,Northstar Industries 238,Manufacturing,538150.0,94.0,1.0,2026-09-17,New,Call completed,Growth,Central,Rep F
+LD-0239,Summit Partners 239,Education,40207.0,15.0,0.0,2026-06-13,Active,No response,Mid-market,South,Rep A
+LD-0240,Northstar Systems 240,Hospitality,86741.0,8.0,0.0,2026-09-14,Qualified,Follow-up due,Mid-market,Central,Rep F
+LD-0241,Aster Holdings 241,Technology,165662.0,20.0,0.0,2026-09-14,New,Pricing viewed,Growth,West,Rep C
+LD-0242,Keystone Works 242,Technology,694605.0,86.0,3.0,2026-09-26,Active,Meeting booked,Mid-market,South,Rep A
+LD-0243,Summit Group 243,Manufacturing,371009.0,66.0,4.0,2026-05-27,New,Meeting booked,Enterprise,South,Rep F
+LD-0244,Aster Industries 244,Hospitality,193310.0,75.0,0.0,2026-08-22,Active,Call completed,Small business,North,Rep F
+LD-0245,Keystone Partners 245,Education,109012.0,98.0,2.0,2026-09-15,Qualified,Follow-up due,Enterprise,East,Rep A
+LD-0246,Cobalt Holdings 246,Logistics,363963.0,82.0,2.0,2026-09-24,Nurture,Pricing viewed,Mid-market,East,Rep E
+LD-0247,Keystone Works 247,Retail,154620.0,80.0,1.0,2026-03-31,Active,Pricing viewed,Small business,North,Rep F
+LD-0248,Vertex Holdings 248,Retail,227129.0,98.0,5.0,2026-09-19,New,Pricing viewed,Growth,South,Rep C
+LD-0249,Juniper Works 249,Technology,27383.0,35.0,3.0,2026-07-01,Qualified,Email opened,Small business,North,Rep A
+LD-0250,Aster Group 250,Hospitality,634634.0,93.0,0.0,2026-09-27,Nurture,Meeting booked,Small business,West,Rep E
+LD-0251,Juniper Systems 251,Logistics,349191.0,10.0,0.0,2026-08-26,New,Follow-up due,Mid-market,West,Rep E
+LD-0252,Keystone Systems 252,Technology,416279.0,37.0,3.0,2026-09-13,Active,Demo requested,Mid-market,South,Rep F
+LD-0253,Juniper Industries 253,Technology,353911.0,45.0,3.0,2026-09-14,Active,No response,Growth,West,Rep D
+LD-0254,Meridian Partners 254,Education,246275.0,98.0,0.0,2026-09-29,Qualified,Call completed,Mid-market,Central,Rep F
+LD-0255,Meridian Works 255,Manufacturing,328352.0,27.0,1.0,2026-07-12,Inactive,Proposal sent,Mid-market,North,Rep E
+LD-0256,Cobalt Partners 256,Financial Services,29818.0,17.0,1.0,2026-05-23,Nurture,Pricing viewed,Enterprise,East,Rep B
+LD-0257,Juniper Partners 257,Logistics,296173.0,25.0,0.0,2026-08-22,Inactive,Call completed,Growth,Central,Rep B
+LD-0258,Meridian Holdings 258,Retail,358659.0,67.0,2.0,2026-04-16,Nurture,Follow-up due,Enterprise,North,Rep B
+LD-0259,Meridian Partners 259,Financial Services,77571.0,63.0,3.0,2026-04-24,Nurture,Proposal sent,Growth,South,Rep C
+LD-0260,Keystone Holdings 260,Manufacturing,230207.0,46.0,2.0,2026-09-24,Qualified,No response,Growth,West,Rep C
+LD-0261,Aster Industries 261,Financial Services,63542.0,76.0,0.0,2026-09-20,Qualified,Demo requested,Enterprise,West,Rep C
+LD-0262,Keystone Group 262,Manufacturing,375523.0,49.0,1.0,2026-07-17,Active,Demo requested,Growth,North,Rep E
+LD-0263,Juniper Industries 263,Hospitality,205746.0,97.0,0.0,2026-09-22,Qualified,Follow-up due,Mid-market,South,Rep B
+LD-0264,Keystone Systems 264,Technology,295636.0,67.0,2.0,2026-07-25,Inactive,Meeting booked,Enterprise,East,Rep A
+LD-0265,Keystone Holdings 265,Financial Services,343350.0,85.0,5.0,2026-03-18,Inactive,Email opened,Mid-market,Central,Rep C
+LD-0266,Vertex Holdings 266,Hospitality,360122.0,74.0,4.0,2026-02-17,New,Meeting booked,Mid-market,North,Rep A
+LD-0267,Keystone Holdings 267,Financial Services,130174.0,42.0,0.0,2026-04-24,New,Proposal sent,Mid-market,North,Rep B
+LD-0268,Pioneer Holdings 268,Logistics,249617.0,27.0,5.0,2026-05-04,Inactive,Call completed,Small business,Central,Rep C
+LD-0269,Cobalt Group 269,Retail,258357.0,87.0,4.0,2026-09-17,Qualified,Meeting booked,Small business,North,Rep D
+LD-0270,Aster Holdings 270,Education,104741.0,100.0,0.0,2026-09-15,Nurture,Call completed,Small business,Central,Rep D
+LD-0271,Atlas Industries 271,Financial Services,408198.0,83.0,0.0,2026-08-19,Qualified,No response,Growth,Central,Rep C
+LD-0272,Vertex Holdings 272,Technology,43996.0,9.0,5.0,2026-09-21,Active,Demo requested,Small business,North,Rep E
+LD-0273,Summit Systems 273,Education,206083.0,93.0,0.0,2026-09-20,Active,Meeting booked,Small business,East,Rep B
+LD-0274,Atlas Holdings 274,Hospitality,130394.0,86.0,2.0,2026-05-17,Inactive,Demo requested,Small business,East,Rep E
+LD-0275,Keystone Holdings 275,Retail,243683.0,75.0,1.0,2026-09-17,Qualified,Proposal sent,Small business,North,Rep B
+LD-0276,Meridian Group 276,Hospitality,118899.0,83.0,1.0,2026-09-24,Active,Follow-up due,Growth,West,Rep B
+LD-0277,Meridian Holdings 277,Financial Services,331761.0,66.0,2.0,2026-04-28,New,Follow-up due,Growth,East,Rep C
+LD-0278,Juniper Holdings 278,Logistics,51942.0,70.0,2.0,2026-07-10,Active,Follow-up due,Small business,North,Rep E
+LD-0279,Atlas Industries 279,Manufacturing,48018.0,77.0,0.0,2026-09-14,Qualified,Call completed,Enterprise,West,Rep B
+LD-0280,Keystone Group 280,Healthcare,378662.0,52.0,2.0,2026-09-14,Active,Demo requested,Enterprise,Central,Rep A
+LD-0281,Cobalt Partners 281,Logistics,163775.0,33.0,0.0,2026-09-21,Active,Demo requested,Mid-market,East,Rep F
+LD-0282,Cobalt Holdings 282,Healthcare,330043.0,13.0,3.0,2026-07-23,Qualified,Pricing viewed,Small business,West,Rep E
+LD-0283,Northstar Industries 283,Logistics,,51.0,1.0,2026-05-30,New,Call completed,Enterprise,East,Rep E
+LD-0284,Meridian Industries 284,Financial Services,590014.0,82.0,0.0,2026-09-22,Qualified,Email opened,Enterprise,North,Rep E
+LD-0285,Northstar Group 285,Financial Services,166096.0,86.0,2.0,2026-09-24,Inactive,Proposal sent,Growth,North,Rep F
+LD-0286,Meridian Holdings 286,Logistics,362833.0,22.0,0.0,2026-08-27,Inactive,No response,Enterprise,North,Rep D
+LD-0287,Vertex Works 287,Technology,350502.0,65.0,4.0,2026-08-17,Inactive,No response,Growth,South,Rep F
+LD-0288,Meridian Holdings 288,Retail,230612.0,20.0,4.0,2026-05-16,Active,Call completed,Mid-market,Central,Rep D
+LD-0289,Cobalt Systems 289,Healthcare,257766.0,98.0,0.0,2026-09-27,Inactive,Demo requested,Mid-market,North,Rep A
+LD-0290,Keystone Partners 290,Healthcare,362668.0,87.0,1.0,2026-03-02,Active,Call completed,Growth,Central,Rep D
+LD-0291,Atlas Systems 291,Logistics,66026.0,69.0,3.0,2026-09-22,New,Pricing viewed,Growth,West,Rep A
+LD-0292,Summit Works 292,Hospitality,361475.0,84.0,3.0,2026-09-27,Inactive,Follow-up due,Growth,East,Rep B
+LD-0293,Keystone Industries 293,Retail,224892.0,98.0,3.0,2026-09-21,New,Follow-up due,Small business,North,Rep B
+LD-0294,Cobalt Systems 294,Logistics,220520.0,58.0,4.0,2026-06-23,Active,No response,Small business,North,Rep A
+LD-0295,Northstar Holdings 295,Manufacturing,329943.0,86.0,,2026-07-19,New,Call completed,Enterprise,East,Rep F
+LD-0296,Keystone Holdings 296,Technology,304986.0,17.0,0.0,2026-09-20,Qualified,Email opened,Enterprise,Central,Rep A
+LD-0297,Cobalt Systems 297,Healthcare,105508.0,54.0,0.0,2026-03-03,Qualified,Email opened,Mid-market,West,Rep B
+LD-0298,Aster Group 298,Manufacturing,380812.0,85.0,2.0,2026-09-16,New,Proposal sent,Mid-market,West,Rep D
+LD-0299,Atlas Industries 299,Education,668165.0,87.0,2.0,2026-09-15,Inactive,Pricing viewed,Small business,South,Rep F
+LD-0300,Aster Industries 300,Education,418296.0,17.0,0.0,2026-08-20,Qualified,Demo requested,Growth,South,Rep D
+LD-0301,Pioneer Group 301,Retail,644644.0,82.0,1.0,2026-09-28,Qualified,Follow-up due,Enterprise,North,Rep D
+LD-0302,Northstar Group 302,Hospitality,92938.0,44.0,5.0,2026-09-23,Inactive,Demo requested,Mid-market,South,Rep E
+LD-0303,Northstar Group 303,Healthcare,164062.0,43.0,5.0,2026-04-20,Active,Meeting booked,Enterprise,North,Rep D
+LD-0304,Meridian Systems 304,Retail,194870.0,33.0,3.0,2026-09-15,Active,Follow-up due,Enterprise,East,Rep C
+LD-0305,Northstar Partners 305,Hospitality,380362.0,87.0,1.0,2026-09-13,Nurture,Pricing viewed,Mid-market,North,Rep E
+LD-0306,Aster Partners 306,Healthcare,105224.0,74.0,4.0,2026-02-27,Active,Pricing viewed,Enterprise,East,Rep D
+LD-0307,Summit Works 307,Financial Services,287974.0,27.0,2.0,2026-03-28,Inactive,Email opened,Mid-market,North,Rep E
+LD-0308,Cobalt Systems 308,Financial Services,113332.0,85.0,5.0,2026-09-17,New,Call completed,Mid-market,Central,Rep C
+LD-0309,Juniper Systems 309,Healthcare,248814.0,65.0,3.0,2026-02-20,Qualified,Pricing viewed,Mid-market,East,Rep A
+LD-0310,Summit Industries 310,Financial Services,380474.0,85.0,3.0,2026-09-26,Active,Demo requested,Mid-market,East,Rep F
+LD-0311,Juniper Partners 311,Financial Services,400550.0,,1.0,2026-09-16,New,Call completed,Mid-market,West,Rep D
+LD-0312,Cobalt Partners 312,Healthcare,182531.0,28.0,0.0,2026-08-26,Active,Follow-up due,Mid-market,West,Rep D
+LD-0313,Vertex Group 313,Financial Services,131966.0,22.0,4.0,2026-04-05,Nurture,Demo requested,Small business,East,Rep D
+LD-0314,Pioneer Group 314,Logistics,178374.0,57.0,0.0,2026-08-14,Active,Follow-up due,Small business,East,Rep E
+LD-0315,Pioneer Works 315,Hospitality,222440.0,22.0,5.0,2026-07-06,Qualified,No response,Mid-market,South,Rep C
+LD-0316,Vertex Partners 316,Education,127873.0,58.0,3.0,2026-06-09,Active,Proposal sent,Enterprise,Central,Rep F
+LD-0317,Juniper Partners 317,Technology,304813.0,45.0,1.0,2026-09-19,Inactive,Pricing viewed,Small business,South,Rep E
+LD-0318,Vertex Systems 318,Education,274422.0,50.0,3.0,2026-02-26,Inactive,Proposal sent,Mid-market,West,Rep E
+LD-0319,Meridian Partners 319,Technology,303976.0,67.0,2.0,2026-02-19,Qualified,Pricing viewed,Growth,South,Rep F
+LD-0320,Keystone Group 320,Manufacturing,378358.0,29.0,2.0,2026-05-24,Qualified,Email opened,Enterprise,Central,Rep F
+LD-0321,Juniper Partners 321,Education,416000.0,85.0,4.0,2026-09-13,Qualified,Email opened,Small business,Central,Rep E
+LD-0322,Vertex Partners 322,Retail,104318.0,76.0,1.0,2026-03-14,Active,Pricing viewed,Small business,Central,Rep C
+LD-0323,Atlas Holdings 323,Education,208149.0,54.0,0.0,2026-09-24,Active,Meeting booked,Growth,West,Rep B
+LD-0324,Summit Industries 324,Manufacturing,62908.0,36.0,5.0,2026-09-14,Active,No response,Enterprise,East,Rep B
+LD-0325,Keystone Systems 325,Education,374484.0,99.0,2.0,2026-09-13,Active,Follow-up due,Small business,North,Rep B
+LD-0326,Cobalt Industries 326,Retail,211760.0,50.0,5.0,2026-02-27,Active,Email opened,Enterprise,East,Rep C
+LD-0327,Aster Works 327,Retail,89542.0,90.0,0.0,2026-09-23,Nurture,Email opened,Growth,Central,Rep B
+LD-0328,Atlas Partners 328,Financial Services,383831.0,97.0,0.0,2026-09-13,New,No response,Small business,North,Rep F
+LD-0329,Keystone Industries 329,Healthcare,279682.0,85.0,2.0,2026-09-15,Qualified,Meeting booked,Small business,West,Rep B
+LD-0330,Juniper Industries 330,Retail,178148.0,14.0,2.0,2026-08-23,Active,Email opened,Small business,East,Rep D
+LD-0331,Cobalt Partners 331,Education,118266.0,54.0,2.0,2026-04-16,New,Meeting booked,Mid-market,Central,Rep D
+LD-0332,Northstar Holdings 332,Retail,396578.0,85.0,5.0,2026-05-30,Qualified,Meeting booked,Growth,Central,Rep C
+LD-0333,Keystone Industries 333,Education,279316.0,97.0,2.0,2026-09-15,Active,No response,Enterprise,Central,Rep F
+LD-0334,Summit Works 334,Retail,317335.0,45.0,4.0,2026-06-30,New,Call completed,Small business,East,Rep C
+LD-0335,Summit Works 335,Technology,44704.0,93.0,0.0,2026-09-15,New,Meeting booked,Mid-market,South,Rep A
+LD-0336,Meridian Industries 336,Education,119197.0,88.0,3.0,2026-02-27,Nurture,Demo requested,Mid-market,South,Rep F
+LD-0337,Atlas Group 337,Financial Services,724167.0,95.0,0.0,2026-09-14,Active,Meeting booked,Growth,East,Rep B
+LD-0338,Meridian Group 338,Manufacturing,298809.0,56.0,0.0,2026-09-07,Nurture,No response,Enterprise,North,Rep C
+LD-0339,Northstar Partners 339,Retail,278219.0,92.0,0.0,2026-09-26,Qualified,Meeting booked,Mid-market,Central,Rep D
+LD-0340,Meridian Group 340,Logistics,386601.0,82.0,0.0,2026-09-08,Active,Email opened,Small business,South,Rep F
+LD-0341,Juniper Holdings 341,Manufacturing,72077.0,81.0,5.0,2026-09-16,Inactive,Pricing viewed,Enterprise,South,Rep E
+LD-0342,Pioneer Works 342,Technology,322230.0,10.0,0.0,2026-06-21,Nurture,Follow-up due,Small business,West,Rep F
+LD-0343,Juniper Partners 343,Hospitality,205249.0,81.0,0.0,2026-02-17,Active,Pricing viewed,Enterprise,East,Rep A
+LD-0344,Meridian Holdings 344,Retail,117986.0,71.0,0.0,2026-09-25,Active,Demo requested,Growth,North,Rep C
+LD-0345,Vertex Holdings 345,Education,287246.0,86.0,3.0,2026-07-18,Qualified,Proposal sent,Growth,South,Rep A
+LD-0346,Aster Systems 346,Logistics,245991.0,47.0,0.0,2026-04-19,Active,Pricing viewed,Enterprise,North,Rep F
+LD-0347,Keystone Group 347,Healthcare,339678.0,82.0,3.0,2026-09-19,Nurture,Follow-up due,Growth,South,Rep A
+LD-0348,Northstar Systems 348,Education,277631.0,31.0,0.0,2026-08-09,Qualified,No response,Growth,West,Rep F
+LD-0349,Northstar Systems 349,Financial Services,69147.0,14.0,1.0,2026-09-28,New,Pricing viewed,Mid-market,West,Rep B
+LD-0350,Vertex Holdings 350,Retail,374249.0,19.0,1.0,2026-05-05,New,Follow-up due,Small business,East,Rep D
+LD-0351,Summit Works 351,Logistics,44020.0,86.0,0.0,2026-09-19,Qualified,Pricing viewed,Mid-market,North,Rep E
+LD-0352,Meridian Holdings 352,Logistics,97825.0,11.0,3.0,2026-03-05,Inactive,Meeting booked,Growth,Central,Rep C
+LD-0353,Aster Holdings 353,Education,48463.0,82.0,5.0,2026-09-26,Qualified,Follow-up due,Growth,East,Rep C
+LD-0354,Keystone Industries 354,Financial Services,284996.0,18.0,0.0,2026-04-16,Active,Meeting booked,Mid-market,South,Rep A
+LD-0355,Northstar Partners 355,Logistics,104654.0,25.0,5.0,2026-04-19,Active,Follow-up due,Enterprise,West,Rep D
+LD-0023,Aster Partners 023,Technology,199999.0,88.0,5.0,2026-03-09,Active,Email opened,Small business,North,Rep C
+LD-0108,Keystone Partners 108,Financial Services,270390.0,30.0,0.0,2026-05-03,Active,Pricing viewed,Small business,West,Rep D
+LD-0200,Atlas Works 200,Financial Services,414653.0,65.0,2.0,2026-02-14,Active,Demo requested,Small business,East,Rep C
+LD-0359,Pioneer Industries 359,Retail,331400.0,24.0,5.0,2026-07-19,Qualified,Pricing viewed,Mid-market,West,Rep A
+LD-0360,Keystone Partners 360,Financial Services,275194.0,86.0,0.0,2026-09-29,Nurture,No response,Enterprise,Central,Rep A

@@ -1,0 +1,13 @@
+Product,Region,Revenue,Quantity,Order Date,Customer,Salesperson
+Aster Mug,North,12500,50,2026-01-12,Northstar Works,Rep A
+Aster Mug,South,9800,40,2026-01-22,Meridian Group,Rep B
+Aster Mug,West,15300,60,2026-02-03,Atlas Systems,Rep C
+Birch Lamp,North,21400,20,2026-01-18,Pioneer Industries,Rep A
+Birch Lamp,South,18200,17,2026-02-08,Juniper Holdings,Rep D
+Birch Lamp,East,25500,24,2026-02-22,Vertex Works,Rep B
+Cedar Desk,West,42600,12,2026-01-26,Keystone Group,Rep C
+Cedar Desk,North,39100,11,2026-02-15,Cobalt Systems,Rep A
+Cedar Desk,South,34700,10,2026-03-02,Meridian Group,Rep D
+Dune Shelf,East,21800,15,2026-02-06,Northstar Works,Rep B
+Dune Shelf,West,29400,18,2026-03-11,Summit Industries,Rep C
+Dune Shelf,North,16700,9,2026-03-19,Atlas Systems,Rep A

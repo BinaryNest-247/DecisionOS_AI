@@ -44,6 +44,9 @@ export const api = {
   selectSheet: (sheetName: string) => request<DataResponse>("/api/data/select-sheet", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ sheet_name: sheetName }),
   }),
+  deleteDataset: (datasetId: string) => request<{ status: "deleted"; dataset_id: string }>(`/api/dataset/${encodeURIComponent(datasetId)}`, {
+    method: "DELETE",
+  }),
   analytics: (question: string) => request<AnalyticsResult>("/api/analytics/query", {
     method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question }),
   }),
@@ -54,7 +57,16 @@ export const api = {
       body: JSON.stringify({ question, limit: 10 }),
     }),
   getDecision: (decisionId: string) => request<Decision>(`/api/decision/${encodeURIComponent(decisionId)}`),
-  latestDecision: () => request<DecisionLatestResponse>("/api/decision/latest"),
+  latestDecision: async (): Promise<DecisionLatestResponse | null> => {
+    try {
+      return await request<DecisionLatestResponse>("/api/decision/latest");
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 404) {
+        return null;
+      }
+      throw error;
+    }
+  },
   getEvidence: (decisionId: string) => request<DecisionEvidenceResponse>(`/api/decision/${encodeURIComponent(decisionId)}/evidence`),
   getApproval: (decisionId: string) => request<{ decision_id: string; approval: Approval | null }>(`/api/decision/${encodeURIComponent(decisionId)}/approval`),
   simulate: (decisionId: string, weights: Record<string, number>) =>

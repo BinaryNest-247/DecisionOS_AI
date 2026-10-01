@@ -216,10 +216,41 @@ def analyze(request: AnalyzeRequest) -> dict:
     return result
 
 
+@app.delete("/api/dataset/{dataset_id}")
+@app.delete("/api/data/{dataset_id}")
+def delete_dataset(dataset_id: str) -> dict:
+    global records, active_dataset_metadata, active_upload_bytes, last_analytics_result, decisions
+    is_active = active_dataset_metadata.get("dataset_id") == dataset_id
+    stored_count = storage.count_decisions_for_dataset(dataset_id)
+    if not is_active and stored_count == 0 and not storage.is_dataset_deleted(dataset_id):
+        raise HTTPException(404, "Dataset not found.")
+
+    storage.invalidate_dataset_decisions(dataset_id)
+    for dec_id, dec in list(decisions.items()):
+        if dec.get("dataset_id") == dataset_id:
+            dec["status"] = "invalidated"
+            dec["invalidated_reason"] = "Source dataset was deleted."
+
+    if is_active:
+        records = pd.DataFrame()
+        active_dataset_metadata = {
+            "filename": "No dataset loaded",
+            "file_type": "",
+            "source": "none",
+            "dataset_id": "",
+            "sheet_names": [],
+            "selected_sheet": None,
+        }
+        active_upload_bytes = None
+        last_analytics_result = None
+
+    return {"status": "deleted", "dataset_id": dataset_id}
+
+
 @app.get("/api/decision/latest")
 def latest_decision() -> dict:
     decision = storage.get_latest_decision()
-    if decision is None:
+    if decision is None or decision.get("status") == "invalidated" or storage.is_dataset_deleted(decision.get("dataset_id", "")):
         raise HTTPException(404, "No decision has been created yet.")
     decisions[decision["id"]] = decision
     return {"decision": decision, "approval": storage.get_approval(decision["id"])}
@@ -230,6 +261,8 @@ def get_decision(decision_id: str) -> dict:
     result = decisions.get(decision_id) or storage.get_decision(decision_id)
     if result is None:
         raise HTTPException(404, "Decision not found.")
+    if result.get("status") == "invalidated" or storage.is_dataset_deleted(result.get("dataset_id", "")):
+        raise HTTPException(404, "This decision is no longer available because its source dataset was deleted.")
     decisions[decision_id] = result
     return result
 
@@ -237,7 +270,7 @@ def get_decision(decision_id: str) -> dict:
 @app.get("/api/decision/{decision_id}/approval")
 def get_approval(decision_id: str) -> dict:
     decision = decisions.get(decision_id) or storage.get_decision(decision_id)
-    if decision is None:
+    if decision is None or decision.get("status") == "invalidated" or storage.is_dataset_deleted(decision.get("dataset_id", "")):
         raise HTTPException(404, "Decision not found.")
     return {"decision_id": decision_id, "approval": storage.get_approval(decision_id)}
 
@@ -255,12 +288,18 @@ def simulate(request: SimulationRequest) -> dict:
     decision = decisions.get(request.decision_id) or storage.get_decision(request.decision_id)
     if not decision:
         raise HTTPException(404, "Decision not found.")
+    if decision.get("status") == "invalidated" or storage.is_dataset_deleted(decision.get("dataset_id", "")):
+        raise HTTPException(409, "This decision is no longer available because its source dataset was deleted.")
     if decision.get("dataset_id") and decision["dataset_id"] != active_dataset_metadata["dataset_id"]:
-        raise HTTPException(409, "The active dataset changed after this decision. Analyze again before running a simulation.")
+        raise HTTPException(409, "This decision belongs to a different dataset. Please run a new analysis.")
+    try:
+        weights_after = normalize_weights(request.weights)
+    except ValueError as error:
+        raise HTTPException(400, str(error)) from error
     source_ids = decision.get("retrieved_record_ids", [lead["lead_id"] for lead in decision["leads"]])
     source = records[records["lead_id"].astype(str).isin(source_ids)]
     current = score_for_decision(decision, source, decision["weights"])
-    simulated = score_for_decision(decision, source, normalize_weights(request.weights))
+    simulated = score_for_decision(decision, source, weights_after)
     current_ids = [str(value) for value in current["lead_id"].tolist()]
     simulated_ids = [str(value) for value in simulated["lead_id"].tolist()]
     current_ranking = [serialize_lead(row) for _, row in current.head(10).iterrows()]
@@ -273,7 +312,6 @@ def simulate(request: SimulationRequest) -> dict:
         for lead_id in old_positions.keys() | new_positions.keys()
         if old_positions.get(lead_id) != new_positions.get(lead_id)
     ]
-    weights_after = normalize_weights(request.weights)
     explanation = "Ranking is recalculated from the same retrieved records using your adjusted factor weights." if changed else "Ranking unchanged under these assumptions. Scores were recalculated from the same retrieved records."
     trace = [
         f"Decision {request.decision_id} re-scored against dataset {active_dataset_metadata['dataset_id']}.",

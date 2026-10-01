@@ -232,6 +232,7 @@ function App() {
       const candidateId = queryDecisionId || storedDecisionId;
       let restored: Decision | null = null;
       let restoredApproval: Approval | null = null;
+
       if (candidateId) {
         try {
           restored = await api.getDecision(candidateId);
@@ -244,22 +245,30 @@ function App() {
       if (!restored) {
         try {
           const latest = await api.latestDecision();
-          restored = latest.decision;
-          restoredApproval = latest.approval;
+          if (latest) {
+            restored = latest.decision;
+            restoredApproval = latest.approval;
+          }
         } catch (error) {
           if (error instanceof ApiError && error.status === 404) {
             clearCurrentDecision();
-            if (openDecisionView) setView("decisions");
+            if (openDecisionView && view === "overview") setView("decisions");
             return null;
           }
           throw error;
         }
       }
 
-      if (restored.dataset_id !== activeDatasetId) {
+      if (!restored) {
+        clearCurrentDecision();
+        if (openDecisionView && view === "overview") setView("decisions");
+        return null;
+      }
+
+      if (activeDatasetId && restored.dataset_id !== activeDatasetId) {
         try {
           const latest = await api.latestDecision();
-          if (latest.decision.id !== restored.id && latest.decision.dataset_id === activeDatasetId) {
+          if (latest && latest.decision.id !== restored.id && latest.decision.dataset_id === activeDatasetId) {
             restored = latest.decision;
             restoredApproval = latest.approval;
           }
@@ -267,7 +276,7 @@ function App() {
           // Keep the stale decision message when no usable latest decision exists.
         }
       }
-      if (restored.dataset_id !== activeDatasetId) {
+      if (activeDatasetId && restored.dataset_id !== activeDatasetId) {
         localStorage.removeItem(CURRENT_DECISION_STORAGE_KEY);
         setDecision(null);
         setActiveLead(null);
@@ -275,14 +284,18 @@ function App() {
         setApproval(null);
         setApprovalState("pending");
         setDecisionLoadState("stale");
-        setDecisionLoadError("This decision belongs to a previous dataset. Please analyze the current dataset again.");
-        if (openDecisionView) setView("decisions");
+        setDecisionLoadError("This decision belongs to a different dataset. Please run a new analysis.");
+        if (openDecisionView && view === "overview") setView("decisions");
         return null;
       }
 
       if (!restoredApproval) {
-        const approvalResponse = await api.getApproval(restored.id);
-        restoredApproval = approvalResponse.approval;
+        try {
+          const approvalResponse = await api.getApproval(restored.id);
+          restoredApproval = approvalResponse.approval;
+        } catch {
+          restoredApproval = null;
+        }
       }
       localStorage.setItem(CURRENT_DECISION_STORAGE_KEY, restored.id);
       setDecision(restored);
@@ -294,7 +307,7 @@ function App() {
       setApprovalNote(restoredApproval?.note ?? "");
       setModifiedRecommendation(restoredApproval?.recommendation ?? restored.recommendation);
       setDecisionLoadState("ready");
-      if (openDecisionView) setView("decisions");
+      if (openDecisionView && view === "overview") setView("decisions");
       return restored;
     } catch (error) {
       setDecisionLoadState("error");
@@ -1908,15 +1921,15 @@ function DecisionStatePanel({
     return (
       <section className="panel empty-state" role="status">
         <span className="empty-icon">{icon}</span>
-        <h2>Loading decision...</h2>
+        <h2>Loading current decision...</h2>
         <p>Restoring the current recommendation and its approval status.</p>
       </section>
     );
   }
   if (state === "none") {
-    return <EmptyState icon={icon} title="No decision has been created yet." detail="Ask a lead prioritization question to create a ranked, evidence-backed recommendation." button="Ask DecisionOS" onClick={onAsk} />;
+    return <EmptyState icon={icon} title="No decision available. Run an analysis first." detail="Ask a lead prioritization question to create a ranked, evidence-backed recommendation." button="Ask DecisionOS" onClick={onAsk} />;
   }
-  return <EmptyState icon={icon} title={state === "stale" ? "Decision belongs to an older dataset" : "Decision could not be loaded"} detail={error || "Check the backend connection and retry restoring the decision."} button="Retry" onClick={onRetry} />;
+  return <EmptyState icon={icon} title={state === "stale" ? "Decision belongs to a different dataset" : "Decision could not be loaded"} detail={error || "Check the backend connection and retry restoring the decision."} button={state === "stale" ? "Ask DecisionOS" : "Retry"} onClick={state === "stale" ? onAsk : onRetry} />;
 }
 
 function Ranking({

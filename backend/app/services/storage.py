@@ -25,6 +25,7 @@ class DecisionStorage:
         with self._connect() as connection:
             connection.execute("CREATE TABLE IF NOT EXISTS decisions (id TEXT PRIMARY KEY, payload TEXT NOT NULL)")
             connection.execute("CREATE TABLE IF NOT EXISTS approvals (decision_id TEXT PRIMARY KEY, payload TEXT NOT NULL, FOREIGN KEY(decision_id) REFERENCES decisions(id))")
+            connection.execute("CREATE TABLE IF NOT EXISTS deleted_datasets (dataset_id TEXT PRIMARY KEY, deleted_at TEXT NOT NULL)")
 
     def _connect(self) -> sqlite3.Connection:
         return sqlite3.connect(self.path)
@@ -33,10 +34,51 @@ class DecisionStorage:
         with self._connect() as connection:
             connection.execute("INSERT OR REPLACE INTO decisions(id, payload) VALUES (?, ?)", (decision["id"], json.dumps(decision)))
 
+    def is_dataset_deleted(self, dataset_id: str) -> bool:
+        if not dataset_id:
+            return False
+        with self._connect() as connection:
+            row = connection.execute("SELECT 1 FROM deleted_datasets WHERE dataset_id = ?", (dataset_id,)).fetchone()
+        return row is not None
+
+    def invalidate_dataset_decisions(self, dataset_id: str) -> int:
+        if not dataset_id:
+            return 0
+        now = datetime.now(timezone.utc).isoformat()
+        with self._connect() as connection:
+            connection.execute("INSERT OR REPLACE INTO deleted_datasets(dataset_id, deleted_at) VALUES (?, ?)", (dataset_id, now))
+            rows = connection.execute("SELECT id, payload FROM decisions").fetchall()
+            count = 0
+            for decision_id, payload in rows:
+                decision = self._parse_payload(payload)
+                if decision and decision.get("dataset_id") == dataset_id:
+                    decision["status"] = "invalidated"
+                    decision["invalidated_reason"] = "Source dataset was deleted."
+                    connection.execute("INSERT OR REPLACE INTO decisions(id, payload) VALUES (?, ?)", (decision_id, json.dumps(decision)))
+                    count += 1
+            return count
+
+    def count_decisions_for_dataset(self, dataset_id: str) -> int:
+        if not dataset_id:
+            return 0
+        with self._connect() as connection:
+            rows = connection.execute("SELECT payload FROM decisions").fetchall()
+        count = 0
+        for (payload,) in rows:
+            decision = self._parse_payload(payload)
+            if decision and decision.get("dataset_id") == dataset_id:
+                count += 1
+        return count
+
     def get_decision(self, decision_id: str) -> dict[str, Any] | None:
         with self._connect() as connection:
             row = connection.execute("SELECT payload FROM decisions WHERE id = ?", (decision_id,)).fetchone()
-        return self._parse_payload(row[0]) if row else None
+        if not row:
+            return None
+        decision = self._parse_payload(row[0])
+        if not decision or decision.get("status") == "invalidated" or self.is_dataset_deleted(decision.get("dataset_id", "")):
+            return None
+        return decision
 
     def get_latest_decision(self) -> dict[str, Any] | None:
         with self._connect() as connection:
@@ -45,6 +87,8 @@ class DecisionStorage:
         for (payload,) in rows:
             decision = self._parse_payload(payload)
             if not decision or not decision.get("id"):
+                continue
+            if decision.get("status") == "invalidated" or self.is_dataset_deleted(decision.get("dataset_id", "")):
                 continue
             created_at = decision.get("created_at")
             try:

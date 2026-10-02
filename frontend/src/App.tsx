@@ -1289,7 +1289,7 @@ function App() {
                   <DecisionContext decision={decision} filename={data?.summary.filename ?? "Active dataset"} status={approvalState} />
                 </>
               ) : (
-                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<Search size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} />
+                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<Search size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} supportsLeadDecisions={data?.summary.supports_lead_decisions ?? false} datasetName={data?.summary.filename ?? "No dataset"} onLoadDemo={loadDemo} />
               )}
             </>
           )}
@@ -1463,7 +1463,7 @@ function App() {
                   </aside>
                 </div>
               ) : (
-                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<FileCheck2 size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} />
+                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<FileCheck2 size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} supportsLeadDecisions={data?.summary.supports_lead_decisions ?? false} datasetName={data?.summary.filename ?? "No dataset"} onLoadDemo={loadDemo} />
               )}
             </>
           )}
@@ -1574,7 +1574,7 @@ function App() {
                   )}
                 </>
               ) : (
-                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<SlidersHorizontal size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} />
+                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<SlidersHorizontal size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} supportsLeadDecisions={data?.summary.supports_lead_decisions ?? false} datasetName={data?.summary.filename ?? "No dataset"} onLoadDemo={loadDemo} />
               )}
             </>
           )}
@@ -1702,7 +1702,7 @@ function App() {
                   </aside>
                 </div>
               ) : (
-                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<ShieldCheck size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} />
+                <DecisionStatePanel state={decisionLoadState} error={decisionLoadError} icon={<ShieldCheck size={22} />} onAsk={() => setView("ask")} onRetry={() => void loadCurrentDecision(data?.summary.dataset_id, false, true)} supportsLeadDecisions={data?.summary.supports_lead_decisions ?? false} datasetName={data?.summary.filename ?? "No dataset"} onLoadDemo={loadDemo} />
               )}
             </>
           )}
@@ -1943,12 +1943,18 @@ function DecisionStatePanel({
   icon,
   onAsk,
   onRetry,
+  supportsLeadDecisions,
+  datasetName,
+  onLoadDemo,
 }: {
   state: DecisionLoadState;
   error: string;
   icon: ReactNode;
   onAsk: () => void;
   onRetry: () => void;
+  supportsLeadDecisions: boolean;
+  datasetName: string;
+  onLoadDemo: () => void;
 }) {
   if (state === "loading") {
     return (
@@ -1960,6 +1966,9 @@ function DecisionStatePanel({
     );
   }
   if (state === "none") {
+    if (!supportsLeadDecisions) {
+      return <EmptyState icon={icon} title="This dataset does not support lead decisions" detail={`${datasetName} is available for analytics. Load the demo sales data or upload a supported lead dataset to use decision analysis, evidence, simulation, and approval.`} button="Load demo data" onClick={onLoadDemo} />;
+    }
     return <EmptyState icon={icon} title="No decision available. Run an analysis first." detail="Ask a lead prioritization question to create a ranked, evidence-backed recommendation." button="Ask DecisionOS" onClick={onAsk} />;
   }
   return <EmptyState icon={icon} title={state === "stale" ? "Decision belongs to a different dataset" : "Decision could not be loaded"} detail={error || "Check the backend connection and retry restoring the decision."} button={state === "stale" ? "Ask DecisionOS" : "Retry"} onClick={state === "stale" ? onAsk : onRetry} />;

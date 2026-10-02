@@ -226,14 +226,11 @@ function App() {
         if (!data) setData(currentData);
         activeDatasetId = currentData.summary.dataset_id;
       }
-<<<<<<< HEAD
       if (!activeDatasetId) {
         clearCurrentDecision();
         if (openDecisionView && view === "overview") setView("decisions");
         return null;
       }
-=======
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 
       const queryDecisionId = new URLSearchParams(window.location.search).get("decision");
       const storedDecisionId = localStorage.getItem(CURRENT_DECISION_STORAGE_KEY);
@@ -378,7 +375,6 @@ function App() {
       },
       "Demo dataset active.",
     );
-<<<<<<< HEAD
   const deleteActiveDataset = () => {
     const datasetId = data?.summary.dataset_id;
     if (!datasetId) return;
@@ -398,8 +394,6 @@ function App() {
       "Dataset deleted.",
     );
   };
-=======
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
   const analyze = () => {
     const decisionQuestion = /contact|priorit|sales team|recommend|re-engage|reengage/i.test(question);
     if (decisionQuestion && data?.summary.supports_lead_decisions) {
@@ -949,7 +943,6 @@ function App() {
                   <div>
                     <span className="eyebrow">ACTIVE DATASET</span>
                     <strong>{data?.summary.filename ?? "No dataset"}</strong>
-<<<<<<< HEAD
                     <small>{data?.summary.source === "demo" ? "● Demo dataset" : data?.summary.source === "upload" ? "● Uploaded dataset" : "No dataset loaded"}{data?.summary.file_type ? ` · ${data.summary.file_type.toUpperCase()}` : ""}</small>
                   </div>
                   {data?.summary.dataset_id && (
@@ -961,10 +954,6 @@ function App() {
                       Delete dataset <X size={14} />
                     </button>
                   )}
-=======
-                    <small>{data?.summary.source === "demo" ? "● Demo dataset" : "● Uploaded dataset"} · {data?.summary.file_type?.toUpperCase()}</small>
-                  </div>
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
                   <button
                     className="secondary-button"
                     onClick={loadDemo}

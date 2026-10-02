@@ -7,6 +7,8 @@ import xlwt
 
 from app import main
 from app.main import app
+from app.services.ai_service import AIService
+from app.services.llm_service import LLMServiceError
 from app.services.scoring import score_inactive_leads
 from app.services.storage import DecisionStorage
 
@@ -130,6 +132,8 @@ def test_inactivity_simulation_uses_adjustable_inactivity_scoring_and_normalized
     client.post("/api/data/demo")
     decision = client.post("/api/decision/analyze", json={"question": "Which inactive customers should we re-engage?"}).json()
     assert decision["intent"] == "customer_inactivity"
+    assert "Inactivity Duration" in decision["leads"][0]["reason"]
+    assert "Longer gaps since last contact" in decision["explanation"]
     source_ids = decision["retrieved_record_ids"]
     source = main.records[main.records["lead_id"].astype(str).isin(source_ids)]
     baseline = score_inactive_leads(source, decision["weights"]).head(10)
@@ -154,6 +158,19 @@ def test_inactivity_simulation_uses_adjustable_inactivity_scoring_and_normalized
     assert "unchanged" in unchanged["explanation"].lower()
     assert client.post("/api/simulation/run", json={"decision_id": decision["id"], "weights": {"revenue": -1}}).status_code == 422
     assert client.post("/api/simulation/run", json={"decision_id": decision["id"], "weights": {"revenue": 0}}).status_code == 422
+
+
+def test_inactivity_explanation_fallback_matches_score_direction(monkeypatch):
+    def unavailable(*args, **kwargs):
+        raise LLMServiceError("Provider unavailable")
+
+    monkeypatch.setattr(main.llm_service, "generate", unavailable)
+
+    explanation = AIService().explain("Which customers are at risk?", [{"company": "Acme"}])
+
+    assert "inactivity duration" in explanation.lower()
+    assert "longer gaps since last contact" in explanation.lower()
+    assert "recent activity" not in explanation.lower()
 
 
 def test_old_dataset_decision_is_rejected_by_evidence_simulation_and_approval():

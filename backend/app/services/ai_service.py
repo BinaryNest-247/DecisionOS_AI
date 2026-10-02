@@ -37,14 +37,21 @@ class AIService:
 
     def explain(self, question: str, evidence: list[dict[str, Any]]) -> str:
         if not evidence:
-            return self._fallback()
+            return self._fallback(question)
+        inactivity_query = any(
+            phrase in question.casefold()
+            for phrase in ("inactive", "at risk", "re-engage", "reengage")
+        )
+        system_instruction = "Explain the decision in under 90 words using only the supplied evidence. Do not add unsupported facts or change values."
+        if inactivity_query:
+            system_instruction += " This is a customer-inactivity recovery ranking: longer gaps since last contact increase the inactivity score, and inactive status is prioritized over nurture. Describe this as inactivity duration, not recent activity."
         try:
             return llm_service.generate(
-                "Explain the decision in under 90 words using only the supplied evidence. Do not add unsupported facts or change values.",
+                system_instruction,
                 json.dumps({"question": question, "evidence": evidence[:30]}, allow_nan=False),
             )
         except (LLMServiceError, ValueError, TypeError):
-            return self._fallback()
+            return self._fallback(question)
 
     def plan_analytics(self, question: str, columns: list[str]) -> dict[str, Any] | None:
         try:
@@ -59,7 +66,12 @@ class AIService:
             return answer
 
     @staticmethod
-    def _fallback() -> str:
+    def _fallback(question: str = "") -> str:
+        if any(
+            phrase in question.casefold()
+            for phrase in ("inactive", "at risk", "re-engage", "reengage")
+        ):
+            return "Ranked by inactivity duration, lead value, engagement, purchase history, and lead status. Longer gaps since last contact raise the inactivity score."
         return "Ranked using the available lead value, engagement, contact recency, purchase history, and status. Each score is traceable to the factors shown below."
 
 

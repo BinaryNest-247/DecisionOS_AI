@@ -1300,6 +1300,16 @@ textarea:focus-visible {
     600 14px Manrope,
     sans-serif;
 }
+.evidence-question {
+  margin: 12px 0 0;
+  padding: 9px 10px;
+  border-left: 2px solid var(--amber);
+  background: #20201c;
+  color: #c5c1b6;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
 .select-wrap {
   position: relative;
 }
@@ -1376,8 +1386,10 @@ textarea:focus-visible {
     sans-serif;
 }
 .evidence-grid small {
-  color: #626665;
+  color: #92948e;
   font-size: 8px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 .factor-section {
   margin-top: 19px;
@@ -1713,24 +1725,23 @@ textarea:focus-visible {
   color: #8fbea4;
   background: #1e2b24;
 }
-.approval-state.reject {
-  .approval-state.approved { border-color: #3f5d4c; color: #8fbea4; background: #1e2b24; }
-  .approval-state.modified { border-color: #54462f; color: var(--amber); background: #29231a; }
-  .approval-state.rejected { border-color: #63433d; color: #d29280; background: #2a201e; }
-  .decision-context { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 11px 13px; margin-top: 10px; border: 1px solid var(--border); border-radius: 4px; background: #1b1d1d; }
-  .decision-context span, .decision-context strong { display: block; }
-  .decision-context span { color: var(--faint); font: 8px var(--mono); }
-  .decision-context strong { overflow-wrap: anywhere; margin-top: 5px; color: #e4e0d7; font-size: 9px; }
-  .trace-metadata { display: flex; flex-direction: column; gap: 6px; padding: 10px; margin: 0 0 10px; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); background: #1a1c1c; font-size: 8px; overflow-wrap: anywhere; }
-  .approval-history { display: flex; flex-direction: column; gap: 6px; padding: 11px 12px; margin-top: 14px; border: 1px solid #3b433d; border-radius: 4px; color: #bbb8ae; background: #1b201d; font-size: 9px; overflow-wrap: anywhere; }
-  .approval-history strong { color: #a8c2af; font: 8px var(--mono); }
-  .approval-history small { margin-top: 4px; color: #93b19e; }
-  @media (max-width: 700px) {
-    .decision-context { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
+.approval-state.approved { border-color: #3f5d4c; color: #8fbea4; background: #1e2b24; }
+.approval-state.modified { border-color: #54462f; color: var(--amber); background: #29231a; }
+.approval-state.rejected {
   border-color: #63433d;
   color: #d29280;
   background: #2a201e;
+}
+.decision-context { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 11px 13px; margin-top: 10px; border: 1px solid var(--border); border-radius: 4px; background: #1b1d1d; }
+.decision-context span, .decision-context strong { display: block; }
+.decision-context span { color: var(--faint); font: 8px var(--mono); }
+.decision-context strong { overflow-wrap: anywhere; margin-top: 5px; color: #e4e0d7; font-size: 9px; }
+.trace-metadata { display: flex; flex-direction: column; gap: 6px; padding: 10px; margin: 0 0 10px; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); background: #1a1c1c; font-size: 8px; overflow-wrap: anywhere; }
+.approval-history { display: flex; flex-direction: column; gap: 6px; padding: 11px 12px; margin-top: 14px; border: 1px solid #3b433d; border-radius: 4px; color: #bbb8ae; background: #1b201d; font-size: 9px; overflow-wrap: anywhere; }
+.approval-history strong { color: #a8c2af; font: 8px var(--mono); }
+.approval-history small { margin-top: 4px; color: #93b19e; }
+@media (max-width: 700px) {
+  .decision-context { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 .approval-card h2 {
   margin: 15px 0 7px;
@@ -1765,6 +1776,29 @@ textarea:focus-visible {
   font:
     600 12px Manrope,
     sans-serif;
+}
+.approval-evidence-link {
+  width: 100%;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid #414443;
+  border-radius: 4px;
+  background: #202222;
+  color: #d2d0c9;
+  font-size: 10px;
+  text-align: left;
+  cursor: pointer;
+}
+.approval-evidence-link svg:last-child {
+  margin-left: auto;
+  color: var(--amber);
+}
+.approval-evidence-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 .form-label {
   display: block;
@@ -1864,6 +1898,19 @@ textarea:focus-visible {
 }
 .approval-check svg {
   color: var(--green);
+}
+.approval-check.pending {
+  color: var(--amber);
+}
+.approval-pending-mark {
+  width: 15px;
+  height: 15px;
+  display: grid;
+  flex: 0 0 15px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font: 9px var(--mono);
 }
 .evaluation-notice {
   display: flex;

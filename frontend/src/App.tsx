@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useEffectEvent, useState, type ReactNode } from "react";
 import {
   Activity,
   ArrowDownRight,
@@ -321,6 +321,11 @@ function App() {
     }
   };
 
+  const restoreStartupDecision = useEffectEvent(
+    (datasetId: string, openDecisionView: boolean) =>
+      loadCurrentDecision(datasetId, openDecisionView),
+  );
+
   useEffect(() => {
     api
       .health()
@@ -332,7 +337,7 @@ function App() {
         setData(result);
         setQuestion((current) => current === examples[0] ? result.summary.supports_lead_decisions ? examples[0] : result.summary.suggested_questions[0] ?? current : current);
         const hadStoredDecision = Boolean(localStorage.getItem(CURRENT_DECISION_STORAGE_KEY) || new URLSearchParams(window.location.search).get("decision"));
-        void loadCurrentDecision(result.summary.dataset_id, hadStoredDecision);
+        void restoreStartupDecision(result.summary.dataset_id, hadStoredDecision);
       })
       .catch(() => setData(null));
     api
@@ -344,13 +349,13 @@ function App() {
 
   const run = async <T,>(
     action: () => Promise<T>,
-    onSuccess: (result: T) => void,
+    onSuccess: (result: T) => void | Promise<void>,
     success?: string,
   ) => {
     setBusy(true);
     setNotice("");
     try {
-      onSuccess(await action());
+      await onSuccess(await action());
       if (success) setNotice(success);
     } catch (error) {
       setNotice(
@@ -395,13 +400,14 @@ function App() {
     );
   };
   const analyze = () => {
-    const decisionQuestion = /contact|priorit|sales team|recommend|re-engage|reengage/i.test(question);
+    const decisionQuestion = /\b(contact|priorit|sales team|recommend|re-engage|reengage|inactive|at risk|opportunit(?:y|ies)|performance|what changed)\b/i.test(question);
     if (decisionQuestion && data?.summary.supports_lead_decisions) {
       return run(() => api.analyze(question), (result) => {
         setDecision(result);
         localStorage.setItem(CURRENT_DECISION_STORAGE_KEY, result.id);
         setActiveLead(result.leads[0] ?? null);
         setSimulation(null);
+        setWeights(Object.fromEntries(Object.entries(result.weights).map(([factor, value]) => [factor, Math.round(value * 100)])));
         setApproval(null);
         setApprovalState("pending");
         setApprovalNote("");
@@ -493,6 +499,9 @@ function App() {
     : data?.summary.suggested_questions.length
       ? data.summary.suggested_questions
       : examples;
+  const activeFactorLabels = decision?.intent === "customer_inactivity"
+    ? { ...factorLabels, recency: "Inactivity duration" }
+    : factorLabels;
   const title =
     navigation.find((item) => item.id === view)?.label ?? "Overview";
 
@@ -550,9 +559,9 @@ function App() {
             </div>
           </div>
           <div className="profile">
-            <div className="avatar">JD</div>
+            <div className="avatar">AR</div>
             <div>
-              <strong>Jordan Davis</strong>
+              <strong>Ajay R</strong>
               <small>Decision maker</small>
             </div>
             <CircleHelp size={16} />
@@ -1071,7 +1080,7 @@ function App() {
                   </span>
                   <button
                     className="primary-button"
-                    disabled={busy || !question.trim()}
+                    disabled={busy || !question.trim() || !data?.summary.rows}
                     onClick={analyze}
                   >
                     {busy ? "Analyzing…" : "Analyze"}{" "}
@@ -1215,7 +1224,7 @@ function App() {
                       <strong>{decision.leads.length} leads ranked</strong>
                       <span>
                         {" "}
-                        · transparent five-factor score · sorted highest first
+                        · {decision.trace_details?.scoring_method ?? "weighted five-factor lead score"} · sorted highest first
                       </span>
                     </div>
                     <button
@@ -1333,6 +1342,7 @@ function App() {
                         <ChevronDown size={14} />
                       </label>
                     </div>
+                    <p className="evidence-question">{decision.question}</p>
                     {activeLead && (
                       <>
                         <div className="evidence-lead-title">
@@ -1355,41 +1365,53 @@ function App() {
                         </div>
                         <div className="evidence-grid">
                           {[
-                            ["Lead value", money(activeLead.lead_value)],
-                            ["Decision score", activeLead.score],
+                            ["Lead value", money(activeLead.lead_value), "lead_value"],
+                            ["Decision score", activeLead.score, "weighted scoring model"],
                             [
                               "Engagement",
                               activeLead.engagement_score == null
                                 ? "Missing"
                                 : `${activeLead.engagement_score}/100`,
+                              "engagement_score",
                             ],
                             [
                               "Previous purchases",
                               activeLead.previous_purchases ?? "Missing",
+                              "previous_purchases",
                             ],
                             [
                               "Last contact date",
                               activeLead.last_contact_date ?? "Missing",
+                              "last_contact_date",
                             ],
                             [
-                              "Recent activity",
+                              decision.intent === "customer_inactivity"
+                                ? "Inactivity duration"
+                                : "Recent activity",
                               activeLead.days_since_contact == null
                                 ? "Unknown"
                                 : `${activeLead.days_since_contact} days ago`,
+                              "days_since_contact",
                             ],
                             [
                               "Lead status",
                               activeLead.lead_status ?? "Missing",
+                              "lead_status",
                             ],
                             [
                               "Last activity",
                               activeLead.sales_activity ?? "Missing",
+                              "sales_activity",
                             ],
-                          ].map(([label, value]) => (
+                          ].map(([label, value, source]) => (
                             <div key={label}>
                               <span>{label}</span>
                               <strong>{value}</strong>
-                              <small>Source: loaded business dataset</small>
+                              <small>
+                                {source === "weighted scoring model"
+                                  ? "Derived · weighted scoring model"
+                                  : `Source: ${decision.trace_details?.dataset_filename ?? data?.summary.filename ?? "Active dataset"} · ${activeLead.lead_id} · ${source}`}
+                              </small>
                             </div>
                           ))}
                         </div>
@@ -1403,7 +1425,7 @@ function App() {
                           {Object.entries(activeLead.contributions).map(
                             ([key, value]) => (
                               <div className="factor-row" key={key}>
-                                <span>{factorLabels[key] ?? key}</span>
+                                <span>{activeFactorLabels[key] ?? key}</span>
                                 <div className="factor-meter">
                                   <i
                                     style={{
@@ -1421,7 +1443,7 @@ function App() {
                           <b>+</b>
                           <span>ENGAGEMENT</span>
                           <b>+</b>
-                          <span>RECENCY</span>
+                          <span>{decision.intent === "customer_inactivity" ? "INACTIVITY" : "RECENCY"}</span>
                           <b>+</b>
                           <span>PURCHASES</span>
                           <b>+</b>
@@ -1439,7 +1461,7 @@ function App() {
                       <span>Dataset ID · {decision.dataset_id}</span>
                       <span>Records · {decision.trace_details?.records_considered ?? decision.retrieved_record_ids?.length ?? decision.leads.length} considered / {decision.trace_details?.records_ranked ?? decision.leads.length} ranked</span>
                       <span>Evidence · {decision.trace_details?.evidence_records ?? decision.evidence.length} records</span>
-                      <span>Weights · {Object.entries(decision.weights).map(([factor, value]) => `${factor} ${Math.round(value * 100)}%`).join(" · ")}</span>
+                      <span>Weights · {Object.entries(decision.weights).map(([factor, value]) => `${activeFactorLabels[factor] ?? factor} ${Math.round(value * 100)}%`).join(" · ")}</span>
                     </div>
                     {decision.trace.map((step, index) => (
                       <div className="trace-step" key={step}>
@@ -1493,7 +1515,7 @@ function App() {
                       </span>
                     </div>
                     <div className="slider-grid">
-                      {Object.entries(factorLabels).map(([key, label]) => (
+                      {Object.entries(activeFactorLabels).map(([key, label]) => (
                         <label className="weight-control" key={key}>
                           <span>
                             <strong>{label}</strong>
@@ -1521,7 +1543,9 @@ function App() {
                               : key === "engagement"
                                 ? "Prioritize active interest"
                                 : key === "recency"
-                                  ? "Prioritize recent conversations"
+                                  ? decision.intent === "customer_inactivity"
+                                    ? "Prioritize longer gaps since last contact"
+                                    : "Prioritize recent conversations"
                                   : key === "purchases"
                                     ? "Reward proven buying history"
                                     : "Factor in current lead status"}
@@ -1620,6 +1644,18 @@ function App() {
                         <strong>{money(decision.leads[0]?.lead_value)}</strong>
                       </div>
                     </div>
+                    <button
+                      className="approval-evidence-link"
+                      onClick={() => {
+                        setActiveLead(decision.leads[0] ?? null);
+                        setView("evidence");
+                      }}
+                      disabled={!decision.leads.length || !decision.evidence.length}
+                    >
+                      <FileCheck2 size={15} />
+                      Inspect supporting evidence
+                      <ArrowRight size={14} />
+                    </button>
                     <label className="form-label">
                       Modify recommendation
                       <textarea
@@ -1691,12 +1727,12 @@ function App() {
                       <Check size={15} />
                       <span>Recommendation generated</span>
                     </div>
-                    <div className="approval-check">
-                      <Check size={15} />
-                      <span>Evidence attached</span>
+                    <div className={`approval-check ${decision.evidence.length ? "" : "pending"}`}>
+                      {decision.evidence.length ? <Check size={15} /> : <span className="approval-pending-mark">!</span>}
+                      <span>{decision.evidence.length ? `${decision.evidence.length} evidence records attached` : "No evidence attached"}</span>
                     </div>
-                    <div className="approval-check">
-                      <Check size={15} />
+                    <div className={`approval-check ${approvalState === "pending" ? "pending" : ""}`}>
+                      {approvalState === "pending" ? <span className="approval-pending-mark">!</span> : <Check size={15} />}
                       <span>{approvalState === "pending" ? "Human approval required" : "Human approval recorded"}</span>
                     </div>
                   </aside>

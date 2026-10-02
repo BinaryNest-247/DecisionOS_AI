@@ -95,11 +95,17 @@ def score_for_decision(decision: dict[str, Any], records: pd.DataFrame, weights:
     return score_leads(records, weights)
 
 
-def serialize_lead(row: pd.Series) -> dict[str, Any]:
+def serialize_lead(row: pd.Series, intent: str = "lead_prioritization") -> dict[str, Any]:
     last_contact = pd.to_datetime(row.get("last_contact_date"), errors="coerce")
     days_since = (pd.Timestamp(date.today()) - last_contact).days if not pd.isna(last_contact) else None
     contributions = {key: float(row.get(f"{key}_contribution", 0)) for key in ("revenue", "engagement", "recency", "purchases", "status")}
-    positive = [name.replace("recency", "recent activity").title() for name, value in contributions.items() if value >= 12]
+    positive = [
+        "Inactivity Duration" if name == "recency" and intent == "customer_inactivity"
+        else "Recent Activity" if name == "recency"
+        else name.title()
+        for name, value in contributions.items()
+        if value >= 12
+    ]
     return {
         "lead_id": str(row.get("lead_id", "")), "company": str(row.get("company") or "Unknown company"),
         "industry": row.get("industry"), "lead_value": float(row["lead_value"]) if pd.notna(row.get("lead_value")) else None,

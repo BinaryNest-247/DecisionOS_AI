@@ -184,7 +184,7 @@ def analyze(request: AnalyzeRequest) -> dict:
         raise HTTPException(422, "Insufficient evidence: matching records contain no usable decision fields.")
     scoring_method = "weighted inactivity recovery score" if inactive_query else "weighted five-factor lead score"
     ranked = (score_inactive_leads(source, weights) if inactive_query else score_leads(source, weights)).head(request.limit)
-    leads = [serialize_lead(row) for _, row in ranked.iterrows()]
+    leads = [serialize_lead(row, intent) for _, row in ranked.iterrows()]
     if not leads:
         raise HTTPException(422, "Insufficient evidence: no records have enough scoring data.")
     decision_id = new_decision_id()
@@ -302,8 +302,8 @@ def simulate(request: SimulationRequest) -> dict:
     simulated = score_for_decision(decision, source, weights_after)
     current_ids = [str(value) for value in current["lead_id"].tolist()]
     simulated_ids = [str(value) for value in simulated["lead_id"].tolist()]
-    current_ranking = [serialize_lead(row) for _, row in current.head(10).iterrows()]
-    simulated_ranking = [serialize_lead(row) for _, row in simulated.head(10).iterrows()]
+    current_ranking = [serialize_lead(row, decision["intent"]) for _, row in current.head(10).iterrows()]
+    simulated_ranking = [serialize_lead(row, decision["intent"]) for _, row in simulated.head(10).iterrows()]
     changed = sum(left != right for left, right in zip(current_ids[:10], simulated_ids[:10]))
     old_positions = {lead["lead_id"]: index + 1 for index, lead in enumerate(current_ranking)}
     new_positions = {lead["lead_id"]: index + 1 for index, lead in enumerate(simulated_ranking)}

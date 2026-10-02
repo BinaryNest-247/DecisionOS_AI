@@ -17,7 +17,7 @@ from app.services.scoring import DEFAULT_WEIGHTS, INACTIVE_DEFAULT_WEIGHTS, new_
 from app.services.storage import storage
 
 app = FastAPI(title="DecisionOS AI", version="0.1.0")
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "https://decision-os-ai.vercel.app"], allow_methods=["*"], allow_headers=["*"])
 records = pd.DataFrame()
 active_dataset_metadata = {"filename": "No dataset loaded", "file_type": "", "source": "none", "dataset_id": "", "sheet_names": [], "selected_sheet": None}
 active_upload_bytes: bytes | None = None

@@ -18,13 +18,8 @@ from app.services.storage import storage
 
 app = FastAPI(title="DecisionOS AI", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], allow_methods=["*"], allow_headers=["*"])
-<<<<<<< HEAD
 records = pd.DataFrame()
 active_dataset_metadata = {"filename": "No dataset loaded", "file_type": "", "source": "none", "dataset_id": "", "sheet_names": [], "selected_sheet": None}
-=======
-records = load_demo()
-active_dataset_metadata = {"filename": "demo_sales_data.csv", "file_type": "csv", "source": "demo", "dataset_id": str(uuid4()), "sheet_names": [], "selected_sheet": None}
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 active_upload_bytes: bytes | None = None
 last_analytics_result: dict | None = None
 decisions: dict[str, dict] = {}
@@ -230,19 +225,11 @@ def delete_dataset(dataset_id: str) -> dict:
     if not is_active and stored_count == 0 and not storage.is_dataset_deleted(dataset_id):
         raise HTTPException(404, "Dataset not found.")
 
-<<<<<<< HEAD
     storage.delete_dataset_records(dataset_id)
     for dec_id, dec in list(decisions.items()):
         if dec.get("dataset_id") == dataset_id:
             decisions.pop(dec_id, None)
             approvals.pop(dec_id, None)
-=======
-    storage.invalidate_dataset_decisions(dataset_id)
-    for dec_id, dec in list(decisions.items()):
-        if dec.get("dataset_id") == dataset_id:
-            dec["status"] = "invalidated"
-            dec["invalidated_reason"] = "Source dataset was deleted."
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 
     if is_active:
         records = pd.DataFrame()
@@ -341,11 +328,8 @@ def approve(request: ApprovalRequest) -> dict:
     decision = decisions.get(request.decision_id) or storage.get_decision(request.decision_id)
     if decision is None:
         raise HTTPException(404, "Decision not found.")
-<<<<<<< HEAD
     if decision.get("status") == "invalidated" or storage.is_dataset_deleted(decision.get("dataset_id", "")):
         raise HTTPException(409, "This decision is no longer available because its source dataset was deleted.")
-=======
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
     if decision.get("dataset_id") and decision["dataset_id"] != active_dataset_metadata["dataset_id"]:
         raise HTTPException(409, "The active dataset changed after this decision. Analyze again before approving it.")
     if request.action not in {"approve", "modify", "reject"}:

@@ -41,18 +41,13 @@ class DecisionStorage:
             row = connection.execute("SELECT 1 FROM deleted_datasets WHERE dataset_id = ?", (dataset_id,)).fetchone()
         return row is not None
 
-<<<<<<< HEAD
     def delete_dataset_records(self, dataset_id: str) -> int:
-=======
-    def invalidate_dataset_decisions(self, dataset_id: str) -> int:
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
         if not dataset_id:
             return 0
         now = datetime.now(timezone.utc).isoformat()
         with self._connect() as connection:
             connection.execute("INSERT OR REPLACE INTO deleted_datasets(dataset_id, deleted_at) VALUES (?, ?)", (dataset_id, now))
             rows = connection.execute("SELECT id, payload FROM decisions").fetchall()
-<<<<<<< HEAD
             decision_ids: list[str] = []
             for decision_id, payload in rows:
                 decision = self._parse_payload(payload)
@@ -63,17 +58,6 @@ class DecisionStorage:
                 connection.execute(f"DELETE FROM approvals WHERE decision_id IN ({placeholders})", decision_ids)
                 connection.execute(f"DELETE FROM decisions WHERE id IN ({placeholders})", decision_ids)
             return len(decision_ids)
-=======
-            count = 0
-            for decision_id, payload in rows:
-                decision = self._parse_payload(payload)
-                if decision and decision.get("dataset_id") == dataset_id:
-                    decision["status"] = "invalidated"
-                    decision["invalidated_reason"] = "Source dataset was deleted."
-                    connection.execute("INSERT OR REPLACE INTO decisions(id, payload) VALUES (?, ?)", (decision_id, json.dumps(decision)))
-                    count += 1
-            return count
->>>>>>> 8e03c96660b8785c021372d016b8b39ca7766d71
 
     def count_decisions_for_dataset(self, dataset_id: str) -> int:
         if not dataset_id:
